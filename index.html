@@ -144,7 +144,7 @@
 <section class="hero">
   <h1>Is your investment being diluted?</h1>
   <p class="sub lede">Enter a ticker. We read what the company filed and answer six questions
-     about how it raised money. Every answer points to the document it came from.</p>
+     about the terms it agreed to. Every answer points to the document it came from.</p>
 
   <div class="finder">
     <input id="tk" type="text" maxlength="8" placeholder="TICKER" autocomplete="off"
@@ -161,11 +161,13 @@
      2 · THE SIX TESTS — the standard, before anyone is measured by it
      ============================================================ -->
 <section>
-  <p class="eyebrow">The standard</p>
-  <h2>Six questions, asked the same way every time</h2>
+  <p class="eyebrow">The standard &middot; amended 24 August 2026</p>
+  <h2>Ten questions, asked the same way every time</h2>
   <p class="lede">Each one is answered from a document the company filed. The questions are
      fixed before any company is looked at, so the answer cannot be steered by what would make
-     a better story.</p>
+     a better story. Four of them were added on 24 August 2026 after a company came back nearly
+     clean on the first six and the exhibit turned out to say otherwise. The
+     <a href="method.html">method page</a> records what changed and why.</p>
 
   <div class="table-wrap">
     <table class="tests">
@@ -178,7 +180,9 @@
     </table>
   </div>
   <p class="note">A test that cannot apply to an instrument is marked <span class="badge na">n/a</span>,
-     not counted as a failure. A convertible note has no warrant coverage; a share placement has no blocker.</p>
+     not counted as a failure. A convertible note has no warrant coverage; a share placement has no blocker.
+     <b>No company is scored above <i>flagged</i> until someone has read the exhibit itself &mdash; not
+     the 8-K summary of it.</b></p>
 </section>
 
 <hr class="rule">
@@ -448,7 +452,7 @@
           '<td class="tk"><a href="company.html?ticker=' + esc(r.ticker) + '">' + esc(r.ticker) + '</a></td>' +
           '<td>' + instrument(r.mechanism) + '</td>' +
           '<td class="dt">' + esc(r.event_date) + '</td>' +
-          '<td class="num"><span class="badge fail">' + esc(r.tests_failed) + ' of 6</span></td>' +
+          '<td class="num"><span class="badge fail">' + esc(r.tests_failed) + ' of 10</span></td>' +
           '<td class="num">' + pct(r.chg_90d_pct) + '</td>' +
           '<td class="num">' + pct(r.chg_1y_pct) + '</td>' +
           '<td>' + (since.length ? since.join(' · ') : '&mdash;') + '</td>' +
@@ -471,7 +475,7 @@
           '<td class="tk"><a href="company.html?ticker=' + esc(r.ticker) + '">' + esc(r.ticker) + '</a></td>' +
           '<td>' + instrument(r.mechanism) + '</td>' +
           '<td class="dt">' + esc(r.event_date) + '</td>' +
-          '<td class="num"><span class="badge clear">0 of 6</span></td>' +
+          '<td class="num"><span class="badge clear">0 of 10</span></td>' +
           '<td class="num">' + pct(r.chg_1y_pct) + '</td>' +
           '<td>' + esc(r.notes || '') + '</td>' +
         '</tr>';
@@ -511,7 +515,7 @@
         '<div class="res ' + cls + '">' +
           '<h3>' + esc(r.ticker) + (r.company_name ? ' &mdash; ' + esc(r.company_name) : '') + '</h3>' +
           '<p class="meta">' + instrument(r.mechanism) + ' &middot; ' + esc(r.event_date) +
-            ' &middot; <span class="badge ' + cls + '">' + failed + ' of 6 failed</span></p>' +
+            ' &middot; <span class="badge ' + cls + '">' + failed + ' of 10 failed</span></p>' +
           (r.notes ? '<p>' + esc(r.notes) + '</p>' : '') +
           '<a class="go" href="company.html?ticker=' + esc(r.ticker) + '">See the evidence &rarr;</a>' +
         '</div>';
