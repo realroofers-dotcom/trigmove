@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Company detail — Triggered Short™</title>
+<meta name="description" content="Six questions answered from a company's own filings, with the document behind each answer and what happened to the share count afterward.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;650&display=swap" rel="stylesheet">
+<meta name="author" content="Mark Nejmeh">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.co-head{padding:26px 0 20px;border-bottom:1px solid var(--rule-2,#DCE2E8)}
+.co-head h1{font-family:var(--serif,Bitter,Georgia,serif);font-size:clamp(24px,3vw,34px);
+  margin:0 0 6px;letter-spacing:-.01em}
+.co-head .tk{font-family:var(--mono,"IBM Plex Mono",monospace);letter-spacing:.06em}
+.co-head .meta{font-size:14px;color:var(--ink-2,#5A6472);margin:0}
+.verdict{display:inline-block;margin:12px 0 0;font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-size:13px;letter-spacing:.07em;text-transform:uppercase;padding:6px 12px;border-radius:3px;border:1px solid}
+.verdict.fail{background:#FBEAEC;color:#B3202C;border-color:#F0C9CD}
+.verdict.clear{background:#E9F5F0;color:#1B7F79;border-color:#BFE0D6}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:20px 0 4px}
+.fig{border:1px solid var(--rule-2,#DCE2E8);border-radius:5px;padding:13px 15px;background:#fff}
+.fig .k{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2,#5A6472);margin:0 0 5px}
+.fig .v{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:21px;font-weight:600;margin:0;line-height:1.15}
+.fig .n{font-size:12px;color:var(--ink-2,#5A6472);margin:5px 0 0}
+.neg{color:#B3202C}.pos{color:#1B7F79}
+
+.q{border:1px solid var(--rule-2,#DCE2E8);border-left-width:5px;border-radius:5px;
+  padding:15px 17px;margin-bottom:12px;background:#fff}
+.q.fail{border-left-color:#B3202C}
+.q.pass{border-left-color:#1B7F79}
+.q.na{border-left-color:#A9B3BF}
+.q.unk{border-left-color:#8A6A12}
+.q .no{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;color:var(--ink-2,#5A6472)}
+.q h3{margin:2px 0 6px;font-size:17px}
+.q .ans{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;letter-spacing:.06em;
+  text-transform:uppercase;padding:3px 8px;border-radius:3px;border:1px solid;float:right}
+.q .ans.fail{background:#FBEAEC;color:#B3202C;border-color:#F0C9CD}
+.q .ans.pass{background:#E9F5F0;color:#1B7F79;border-color:#BFE0D6}
+.q .ans.na{background:#F4F6F8;color:#4A5563;border-color:#C6CDD6}
+.q .ans.unk{background:#FDF6E3;color:#8A6A12;border-color:#E3C77A}
+.q .src{font-size:12.5px;color:var(--ink-2,#5A6472);margin:8px 0 0}
+.ev{border-top:1px solid var(--rule-2,#DCE2E8);margin-top:11px;padding-top:11px}
+.ev p{margin:0 0 6px;font-size:14px}
+.ev blockquote{margin:6px 0;padding:6px 0 6px 12px;border-left:3px solid var(--rule-2,#DCE2E8);
+  font-style:italic;font-size:14px}
+.ev a{font-size:13px}
+.busy{color:var(--ink-2,#5A6472);font-size:14px}
+.back{font-size:13.5px}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="mast-inner">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="TriggeredShort.com" width="1223" height="297">
+    </a>
+    <div class="mast-meta">
+      Research docket<br>
+      Mark Nejmeh<br>
+      <b>Foundation for Job Creation</b><br>
+      SEC EDGAR filer · LTID <b>71743954</b>
+    </div>
+  </div>
+</header>
+
+<nav class="docket-nav">
+  <div class="nav-inner">
+    <a href="index.html">Docket</a>
+    <a href="chronology.html">Chronology</a>
+    <a href="data.html">Market data</a>
+    <a href="model.html">Calculator</a>
+    <a href="example.html">Example</a>
+    <a href="forms.html">SEC codes</a>
+    <a href="records.html">Records</a>
+    <a href="exhibits.html">Exhibits</a>
+    <a href="method.html">Method</a>
+  </div>
+</nav>
+
+<main>
+  <p class="back"><a href="index.html">&larr; All companies</a></p>
+  <div id="page"><p class="busy">Loading…</p></div>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <b>Mark Nejmeh</b><br>
+    <a href="https://jobcreation.us" style="color:var(--ink-2)">Foundation for Job Creation</a><br>
+    P.O. Box 589, Clifton, New Jersey 07012<br>
+    732-995-3914 · realroofers@gmail.com<br><br>
+    SEC EDGAR filer information — CIK 0001860507 · SEC File No. 150-11431 · LTID 71743954 · Form 13H accepted May 4, 2021
+    <p class="disclaimer">Nothing on this site is investment advice or a recommendation to buy or sell any security. Every answer below is taken from a document the company filed with the Securities and Exchange Commission. No statement here alleges that any person or firm has broken any law.</p>
+  </div>
+</footer>
+
+<script>
+(function(){try{
+  fetch('/api/hit',{method:'POST',headers:{'content-type':'application/json'},
+    body:JSON.stringify({path:location.pathname+location.search,ref:document.referrer||''}),
+    keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+<script>
+(function(){
+  var APP = 'https://8kzip.com';
+
+  var esc = function(s){ return String(s==null?'':s).replace(/[&<>"']/g,
+    function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+
+  var num = function(v){
+    if (v === null || v === undefined || v === '') return '&mdash;';
+    return Number(v).toLocaleString('en-US');
+  };
+
+  var money = function(v){
+    if (v === null || v === undefined || v === '') return '&mdash;';
+    return '$' + Number(v).toFixed(Number(v) < 10 ? 4 : 2);
+  };
+
+  var pct = function(v){
+    if (v === null || v === undefined || v === '') return '&mdash;';
+    var n = Number(v);
+    return '<span class="' + (n < 0 ? 'neg' : 'pos') + '">' +
+           (n > 0 ? '+' : '') + n.toFixed(1) + '%</span>';
+  };
+
+  var instrument = function(m){
+    return ({
+      warrant_inducement:'Warrant inducement',
+      warrant_issuance:'Warrants issued with a raise',
+      convertible:'Convertible note',
+      discounted_placement:'Discounted share placement',
+      pipe:'PIPE',
+      atm:'At-the-market programme',
+      customer_warrant:'Customer warrant'
+    })[m] || (m || '');
+  };
+
+  /* map a stored answer to how it should read and colour.
+     The tests are worded so that "yes" is the failing answer on 1,2,4,5
+     and "no" is the failing answer on 3. Test 6 records, it never fails. */
+  var FAIL_ON_YES = { 1:true, 2:true, 4:true, 5:true };
+  function verdictOf(n, v){
+    v = (v || 'unknown').toLowerCase();
+    if (v === 'n/a' || v === 'na')  return { cls:'na',   word:'Not applicable' };
+    if (v === 'unknown')            return { cls:'unk',  word:'Not established' };
+    if (n === 6)                    return { cls:'na',   word:'Recorded' };
+    var failed = FAIL_ON_YES[n] ? (v === 'yes') : (v === 'no');
+    return failed ? { cls:'fail', word:'Fails' } : { cls:'pass', word:'Clear' };
+  }
+
+  var q = new URLSearchParams(location.search).get('ticker') || '';
+  var t = q.toUpperCase().replace(/[^A-Z.\-]/g,'').slice(0,8);
+  var page = document.getElementById('page');
+
+  if (!t) {
+    page.innerHTML = '<p class="busy">No ticker given. <a href="index.html">Back to the list</a>.</p>';
+    return;
+  }
+
+  fetch('/api/detections?ticker=' + encodeURIComponent(t))
+    .then(function(r){ return r.text().then(function(x){
+      try { return JSON.parse(x); }
+      catch(e){ throw new Error('The server returned ' + r.status + '.'); } }); })
+    .then(function(d){
+      var r = (d.rows || [])[0];
+      if (!r) {
+        page.innerHTML =
+          '<div class="co-head"><h1><span class="tk">' + esc(t) + '</span></h1>' +
+          '<p class="meta">Nobody has run the six questions on this company yet.</p></div>' +
+          '<p style="margin-top:18px">The filings are public and the questions are the same for ' +
+          'every company. A screen takes real reading, so it is the one thing here that costs money.</p>' +
+          '<p><a href="' + APP + '/screen?ticker=' + esc(t) + '">Request a screen &rarr;</a></p>';
+        return;
+      }
+
+      var failed = Number(r.tests_failed || 0);
+      var cls = failed === 0 ? 'clear' : 'fail';
+      var word = failed === 0 ? 'Cleared \u2014 0 of 6' : failed + ' of 6 failed';
+
+      var h = '';
+
+      /* ---- head ---- */
+      h += '<div class="co-head">' +
+             '<h1><span class="tk">' + esc(r.ticker) + '</span>' +
+             (r.company_name ? ' &mdash; ' + esc(r.company_name) : '') + '</h1>' +
+             '<p class="meta">' + esc(instrument(r.mechanism)) +
+               ' &middot; ' + esc(r.event_date) +
+               (r.state_of_incorporation ? ' &middot; incorporated in ' + esc(r.state_of_incorporation) : '') +
+               (r.filing_type ? ' &middot; ' + esc(r.filing_type) : '') + '</p>' +
+             '<span class="verdict ' + cls + '">' + word + '</span>' +
+           '</div>';
+
+      /* ---- the figures ---- */
+      h += '<div class="figs">';
+      h += '<div class="fig"><p class="k">Price on the day</p><p class="v">' + money(r.price_at_event) + '</p></div>';
+      h += '<div class="fig"><p class="k">90 days later</p><p class="v">' + money(r.price_90d) +
+             '</p><p class="n">' + pct(r.chg_90d_pct) + '</p></div>';
+      h += '<div class="fig"><p class="k">One year later</p><p class="v">' + money(r.price_1y) +
+             '</p><p class="n">' + pct(r.chg_1y_pct) + '</p></div>';
+      h += '<div class="fig"><p class="k">Shares out then</p><p class="v">' + num(r.shares_out_at_event) + '</p></div>';
+      h += '<div class="fig"><p class="k">Shares out now</p><p class="v">' + num(r.shares_out_now) +
+             '</p>' + (r.dilution_multiple ? '<p class="n">' + Number(r.dilution_multiple).toFixed(1) + '\u00D7 more shares</p>' : '') +
+           '</div>';
+      if (r.reverse_split_since) {
+        h += '<div class="fig"><p class="k">Reverse split since</p><p class="v">' +
+             esc(r.reverse_split_ratio || 'Yes') + '</p>' +
+             (r.reverse_split_date ? '<p class="n">' + esc(r.reverse_split_date) + '</p>' : '') + '</div>';
+      }
+      if (r.financings_since) {
+        h += '<div class="fig"><p class="k">Raises since</p><p class="v">' + num(r.financings_since) + '</p></div>';
+      }
+      h += '</div>';
+      h += '<p class="note">Prices and share counts are taken from the cover page of the company\'s ' +
+           'own reports and from third-party market data. A blank means it has not been filled in yet.</p>';
+
+      /* ---- the six questions ---- */
+      h += '<hr class="rule"><p class="eyebrow">The six questions</p>' +
+           '<h2>Answered from the company\'s own filings</h2>';
+
+      var answers = [
+        r.test_1_floating_reset, r.test_2_financier_holder, r.test_3_non_cash_value,
+        r.test_4_blocker, r.test_5_discount_coverage, r.test_6_who_arranged
+      ];
+
+      (d.tests || []).forEach(function(tst, i){
+        var a = answers[i];
+        var v = verdictOf(tst.test_no, a);
+        h += '<div class="q ' + v.cls + '">' +
+               '<span class="ans ' + v.cls + '">' + v.word + '</span>' +
+               '<span class="no">Question ' + esc(tst.test_no) + '</span>' +
+               '<h3>' + esc(tst.short_name) + '</h3>' +
+               '<p>' + esc(tst.question) + '</p>' +
+               '<p class="src">What fails it: ' + esc(tst.what_fails) +
+                 '<br>Read it in: ' + esc(tst.source_document) + '</p>';
+
+        var ev = (d.evidence || []).filter(function(x){ return x.test_no === tst.test_no; });
+        if (ev.length) {
+          h += '<div class="ev">';
+          ev.forEach(function(x){
+            h += '<p><b>' + esc(x.what_it_shows) + '</b></p>';
+            if (x.quoted_text) h += '<blockquote>' + esc(x.quoted_text) + '</blockquote>';
+            h += '<p><a href="' + esc(x.filing_url) + '">' +
+                 esc(x.filing_type || 'The filing') +
+                 (x.filing_date ? ', ' + esc(x.filing_date) : '') +
+                 (x.page_or_section ? ' \u2014 ' + esc(x.page_or_section) : '') +
+                 ' &rarr;</a></p>';
+          });
+          h += '</div>';
+        }
+        h += '</div>';
+      });
+
+      /* ---- notes, report, follow ---- */
+      if (r.notes) {
+        h += '<hr class="rule"><p class="eyebrow">Note</p><p class="lede">' + esc(r.notes) + '</p>';
+      }
+
+      h += '<hr class="rule"><p class="eyebrow">Next</p><p class="lede">';
+      if (r.report_url) {
+        h += '<a href="' + esc(r.report_url) + '">Read the full report on this company &rarr;</a><br>';
+      }
+      if (r.filing_url) {
+        h += '<a href="' + esc(r.filing_url) + '">Open the filing on EDGAR &rarr;</a><br>';
+      }
+      h += '<a href="' + APP + '/' + esc(r.ticker) + '">Follow ' + esc(r.ticker) +
+           ' at 8kzip.com &rarr;</a></p>';
+
+      page.innerHTML = h;
+      document.title = r.ticker + ' — Triggered Short™';
+    })
+    .catch(function(e){
+      page.innerHTML = '<p class="busy">Could not load this company. ' + esc(e.message) + '</p>';
+    });
+})();
+</script>
+</body>
+</html>

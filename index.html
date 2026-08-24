@@ -419,7 +419,7 @@
   /* ---------- the six tests ---------- */
   function loadTests(){
     var b = document.getElementById('testbody');
-    get('/api/db?table=detection_tests').then(function(d){
+    get('/api/detections?list=tests').then(function(d){
       var rows = (d.rows || d.results || []);
       if (!rows.length) { b.innerHTML = '<tr><td colspan="3" class="busy">No tests on file yet.</td></tr>'; return; }
       b.innerHTML = rows.map(function(t){
@@ -436,7 +436,7 @@
   /* ---------- detected ---------- */
   function loadDetected(){
     var b = document.getElementById('detbody');
-    get('/api/db?view=v_detected').then(function(d){
+    get('/api/detections?list=detected').then(function(d){
       var rows = (d.rows || d.results || []);
       if (!rows.length) { b.innerHTML = '<tr><td colspan="8" class="empty">Nothing on the list yet.</td></tr>'; return; }
       b.innerHTML = rows.map(function(r){
@@ -445,14 +445,14 @@
         if (r.financings_since) since.push(r.financings_since + ' more raise' + (r.financings_since > 1 ? 's' : ''));
         if (r.listing_status && r.listing_status !== 'listed') since.push(esc(r.listing_status));
         return '<tr>' +
-          '<td class="tk">' + esc(r.ticker) + '</td>' +
+          '<td class="tk"><a href="company.html?ticker=' + esc(r.ticker) + '">' + esc(r.ticker) + '</a></td>' +
           '<td>' + instrument(r.mechanism) + '</td>' +
           '<td class="dt">' + esc(r.event_date) + '</td>' +
           '<td class="num"><span class="badge fail">' + esc(r.tests_failed) + ' of 6</span></td>' +
           '<td class="num">' + pct(r.chg_90d_pct) + '</td>' +
           '<td class="num">' + pct(r.chg_1y_pct) + '</td>' +
           '<td>' + (since.length ? since.join(' · ') : '&mdash;') + '</td>' +
-          '<td><a href="' + APP + '/' + esc(r.ticker) + '">Follow &rarr;</a></td>' +
+          '<td><a href="company.html?ticker=' + esc(r.ticker) + '">Detail &rarr;</a></td>' +
         '</tr>';
       }).join('');
     }).catch(function(e){
@@ -463,12 +463,12 @@
   /* ---------- cleared ---------- */
   function loadCleared(){
     var b = document.getElementById('clrbody');
-    get('/api/db?view=v_cleared').then(function(d){
+    get('/api/detections?list=cleared').then(function(d){
       var rows = (d.rows || d.results || []);
       if (!rows.length) { b.innerHTML = '<tr><td colspan="6" class="empty">Nothing cleared yet.</td></tr>'; return; }
       b.innerHTML = rows.map(function(r){
         return '<tr>' +
-          '<td class="tk">' + esc(r.ticker) + '</td>' +
+          '<td class="tk"><a href="company.html?ticker=' + esc(r.ticker) + '">' + esc(r.ticker) + '</a></td>' +
           '<td>' + instrument(r.mechanism) + '</td>' +
           '<td class="dt">' + esc(r.event_date) + '</td>' +
           '<td class="num"><span class="badge clear">0 of 6</span></td>' +
@@ -490,7 +490,7 @@
     out.hidden = false;
     out.innerHTML = '<div class="res none"><p class="busy">Reading the filings for ' + esc(t) + '…</p></div>';
 
-    get('/api/lookup?ticker=' + encodeURIComponent(t)).then(function(d){
+    get('/api/detections?ticker=' + encodeURIComponent(t)).then(function(d){
       var r = (d.rows && d.rows[0]) || d.detection || null;
 
       if (!r) {
@@ -513,8 +513,7 @@
           '<p class="meta">' + instrument(r.mechanism) + ' &middot; ' + esc(r.event_date) +
             ' &middot; <span class="badge ' + cls + '">' + failed + ' of 6 failed</span></p>' +
           (r.notes ? '<p>' + esc(r.notes) + '</p>' : '') +
-          (r.report_url ? '<a class="go" href="' + esc(r.report_url) + '">Read the report &rarr;</a> ' : '') +
-          '<a class="go" href="' + APP + '/' + esc(r.ticker) + '">Follow this company &rarr;</a>' +
+          '<a class="go" href="company.html?ticker=' + esc(r.ticker) + '">See the evidence &rarr;</a>' +
         '</div>';
     }).catch(function(e){
       out.innerHTML = '<div class="res none"><p class="busy">' + esc(e.message) + '</p></div>';
