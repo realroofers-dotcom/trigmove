@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Triggered Short™ — Research Docket</title>
-<meta name="description" content="A docket of primary-source securities research by Mark Nejmeh. Reports, exhibits, records demands and market data, with reproduction instructions for every figure.">
+<title>Triggered Short™ — is your investment being diluted?</title>
+<meta name="description" content="Enter a ticker. We read the filings and answer six questions about how the company raised money. Every answer points to the document it came from.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;650&display=swap" rel="stylesheet">
@@ -12,55 +12,97 @@
 <meta name="copyright" content="© 2026 Mark Nejmeh">
 <meta name="publisher" content="Foundation for Job Creation">
 <meta name="dcterms.creator" content="Mark Nejmeh">
-<meta name="dcterms.dateSubmitted" content="2026-08-12">
-<meta name="generator" content="triggeredshort.com — built 2026-08-12">
+<meta name="generator" content="triggeredshort.com">
 <link rel="canonical" href="https://triggeredshort.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TriggeredShort.com">
-<meta property="og:title" content="Triggered Short™ — securities research docket">
-<meta property="og:description" content="A docket of primary-source securities research: SEC filings, FINRA data, corporate records demands and correspondence. Every figure carries instructions for reproducing it.">
+<meta property="og:title" content="Triggered Short™ — is your investment being diluted?">
+<meta property="og:description" content="Enter a ticker. We read the filings and answer six questions about how the company raised money.">
 <meta property="og:url" content="https://triggeredshort.com/">
 <meta property="og:image" content="https://triggeredshort.com/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Triggered Short™ — securities research docket">
-<meta name="twitter:description" content="A docket of primary-source securities research: SEC filings, FINRA data, corporate records demands and correspondence. Every figure carries instructions for reproducing it.">
+<meta name="twitter:title" content="Triggered Short™ — is your investment being diluted?">
+<meta name="twitter:description" content="Enter a ticker. We read the filings and answer six questions about how the company raised money.">
 <meta name="twitter:image" content="https://triggeredshort.com/og-card.png">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="keywords" content="warrant overhang, share dilution, SEC filings, EDGAR, 10-Q, FINRA short interest, investor education, financial literacy, securities research">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebSite",
   "name": "Triggered Short™ — securities research docket",
   "headline": "Triggered Short™ — securities research docket",
   "description": "A docket of primary-source securities research: SEC filings, FINRA data, corporate records demands and correspondence. Every figure carries instructions for reproducing it.",
   "url": "https://triggeredshort.com/",
   "inLanguage": "en-US",
   "isAccessibleForFree": true,
-  "author": {
-    "@type": "Person",
-    "name": "Mark Nejmeh",
-    "url": "https://marknejmeh.com"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Foundation for Job Creation",
-    "url": "https://jobcreation.us"
-  },
-  "dateModified": "2026-08-12",
+  "author": { "@type": "Person", "name": "Mark Nejmeh", "url": "https://marknejmeh.com" },
+  "publisher": { "@type": "Organization", "name": "Foundation for Job Creation", "url": "https://jobcreation.us" },
   "image": "https://triggeredshort.com/og-card.png",
-  "@type": "WebSite",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://www.sec.gov/edgar/search/#/q={search_term_string}",
+    "target": "https://triggeredshort.com/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
 </script>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="styles.css">
+
+<style>
+/* ---- front-page additions. Everything else comes from styles.css ---- */
+.hero{padding:34px 0 26px;border-bottom:1px solid var(--rule-2)}
+.hero h1{font-family:var(--serif,Bitter,Georgia,serif);font-size:clamp(26px,3.4vw,38px);
+  line-height:1.15;margin:0 0 10px;letter-spacing:-.01em}
+.hero .sub{max-width:56ch;margin:0 0 20px}
+.finder{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch;max-width:620px}
+.finder input{flex:1 1 240px;min-width:0;font:inherit;font-size:19px;
+  font-family:var(--mono,"IBM Plex Mono",monospace);letter-spacing:.06em;text-transform:uppercase;
+  padding:13px 15px;border:2px solid var(--ink,#12355B);border-radius:4px;background:#fff}
+.finder input:focus{outline:3px solid rgba(18,53,91,.25);outline-offset:1px}
+.finder button{font:inherit;font-weight:650;font-size:16px;padding:13px 26px;border:2px solid var(--ink,#12355B);
+  background:var(--ink,#12355B);color:#fff;border-radius:4px;cursor:pointer;white-space:nowrap}
+.finder button:hover{filter:brightness(1.12)}
+.finder-note{font-size:13.5px;color:var(--ink-2,#5A6472);margin:10px 0 0;max-width:60ch}
+
+#result{margin-top:22px}
+.res{border:1px solid var(--rule-2,#DCE2E8);border-left-width:5px;border-radius:5px;padding:16px 18px;background:#fff}
+.res.fail{border-left-color:#B3202C}
+.res.clear{border-left-color:#1B7F79}
+.res.none{border-left-color:#8A6A12}
+.res h3{margin:0 0 4px;font-size:19px}
+.res .meta{font-size:13px;color:var(--ink-2,#5A6472);margin:0 0 12px}
+.res .go{display:inline-block;margin-top:12px;font-weight:600;text-decoration:none;
+  border-bottom:2px solid currentColor;padding-bottom:1px}
+.busy{font-size:14px;color:var(--ink-2,#5A6472)}
+
+.tests{border-collapse:collapse;width:100%;font-size:14.5px;margin-top:6px}
+.tests th{text-align:left;padding:9px 10px;background:#EEF2F7;color:var(--ink,#12355B);
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+.tests td{border-bottom:1px solid var(--rule-2,#DCE2E8);padding:11px 10px;vertical-align:top}
+.tests td:first-child{font-family:var(--mono,"IBM Plex Mono",monospace);color:var(--ink-2,#5A6472);
+  width:34px;text-align:right;white-space:nowrap}
+.tests .src{display:block;font-size:12.5px;color:var(--ink-2,#5A6472);margin-top:3px}
+
+.badge{display:inline-block;font-family:var(--mono,"IBM Plex Mono",monospace);font-size:11.5px;
+  letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:3px;border:1px solid}
+.badge.fail{background:#FBEAEC;color:#B3202C;border-color:#F0C9CD}
+.badge.clear{background:#E9F5F0;color:#1B7F79;border-color:#BFE0D6}
+.badge.na{background:#F4F6F8;color:#4A5563;border-color:#C6CDD6}
+
+.listing{width:100%;border-collapse:collapse;font-size:14.5px}
+.listing th{text-align:left;padding:9px 10px;background:#EEF2F7;color:var(--ink,#12355B);
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+.listing td{border-bottom:1px solid var(--rule-2,#DCE2E8);padding:11px 10px;vertical-align:top}
+.listing .tk{font-family:var(--mono,"IBM Plex Mono",monospace);font-weight:600;font-size:15px}
+.listing .num{text-align:right;font-family:var(--mono,"IBM Plex Mono",monospace);white-space:nowrap}
+.listing .empty{color:var(--ink-2,#5A6472);padding:18px 10px}
+.neg{color:#B3202C}
+.pos{color:#1B7F79}
+</style>
 </head>
 <body>
 
@@ -94,9 +136,111 @@
 
 <main>
 
+<!-- ============================================================
+     1 · THE SEARCH BOX
+     ⚠ MARK — THE HEADLINE AND THE TWO LINES UNDER IT ARE YOURS.
+     What is here is placeholder so the page renders. Replace it.
+     ============================================================ -->
+<section class="hero">
+  <h1>Is your investment being diluted?</h1>
+  <p class="sub lede">Enter a ticker. We read what the company filed and answer six questions
+     about how it raised money. Every answer points to the document it came from.</p>
+
+  <div class="finder">
+    <input id="tk" type="text" maxlength="8" placeholder="TICKER" autocomplete="off"
+           spellcheck="false" aria-label="Ticker symbol">
+    <button id="go" type="button">Check the filings</button>
+  </div>
+  <p class="finder-note">Free. No account. Nothing here is investment advice, and no result
+     says anyone did anything wrong.</p>
+
+  <div id="result" hidden></div>
+</section>
+
+<!-- ============================================================
+     2 · THE SIX TESTS — the standard, before anyone is measured by it
+     ============================================================ -->
+<section>
+  <p class="eyebrow">The standard</p>
+  <h2>Six questions, asked the same way every time</h2>
+  <p class="lede">Each one is answered from a document the company filed. The questions are
+     fixed before any company is looked at, so the answer cannot be steered by what would make
+     a better story.</p>
+
+  <div class="table-wrap">
+    <table class="tests">
+      <thead>
+        <tr><th>#</th><th>The question</th><th>What fails it</th></tr>
+      </thead>
+      <tbody id="testbody">
+        <tr><td colspan="3" class="busy">Loading the tests…</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">A test that cannot apply to an instrument is marked <span class="badge na">n/a</span>,
+     not counted as a failure. A convertible note has no warrant coverage; a share placement has no blocker.</p>
+</section>
+
+<hr class="rule">
+
+<!-- ============================================================
+     3 · DETECTED
+     ============================================================ -->
+<section>
+  <p class="eyebrow">Detected</p>
+  <h2>Companies whose filings failed one or more tests</h2>
+  <p class="lede">Each row links to the filing it came from. The outcome columns record what
+     happened afterward, whichever way it went.</p>
+
+  <div class="table-wrap">
+    <table class="listing">
+      <thead>
+        <tr>
+          <th>Ticker</th><th>Instrument</th><th>Event</th><th class="num">Failed</th>
+          <th class="num">90 days</th><th class="num">1 year</th><th>Since</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="detbody">
+        <tr><td colspan="8" class="busy">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================================================
+     4 · CLEARED
+     ============================================================ -->
+<section>
+  <p class="eyebrow">Cleared</p>
+  <h2>Companies we looked at that came back clean</h2>
+  <p class="lede">A screen that can only ever produce a finding is not a screen. These are on
+     the page for the same reason as everything else — because that is what the filings said.</p>
+
+  <div class="table-wrap">
+    <table class="listing">
+      <thead>
+        <tr>
+          <th>Ticker</th><th>Instrument</th><th>Event</th><th class="num">Failed</th>
+          <th class="num">1 year</th><th>Why it cleared</th>
+        </tr>
+      </thead>
+      <tbody id="clrbody">
+        <tr><td colspan="6" class="busy">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================================================
+     5 · THE DISCLOSURE — moved down, still on the page
+     ============================================================ -->
 <section>
   <p class="eyebrow">Standing disclosure</p>
-  <h2>What this is</h2>
+  <h2>Where the author stands</h2>
   <p class="lede">A numbered archive of securities research assembled from primary sources — SEC filings, FINRA data, corporate records demands, and correspondence. Every figure here carries instructions for reproducing it. Nothing on this site asks the reader to take the author's word for anything.</p>
 
   <div class="standing">
@@ -130,7 +274,7 @@
         <p class="row-title">Summary</p>
         <p class="row-desc">Findings only, numbered, each pointing to the report that carries the support.</p>
       </div>
-      <div class="row-status st-hold">Held to Aug 19</div>
+      <div class="row-status st-filed">Published</div>
     </div>
 
     <div class="row">
@@ -139,7 +283,7 @@
         <p class="row-title">The record requests</p>
         <p class="row-desc">The stockholder meeting of December 15, 2025; three consecutive meetings called without a quorum; sworn demands for inspection of corporate records; the company's rejection through outside counsel; certified mail documentation and return receipts.</p>
       </div>
-      <div class="row-status st-hold">Held to Aug 19</div>
+      <div class="row-status st-filed">Published</div>
     </div>
 
     <div class="row">
@@ -148,7 +292,7 @@
         <p class="row-title">The warrant cycle</p>
         <p class="row-desc">Issue, decline, repricing, replacement warrants at 200 percent, exercise. Documented from company filings only. Includes a dated forward prediction.</p>
       </div>
-      <div class="row-status st-hold">Held to Aug 19</div>
+      <div class="row-status st-filed">Published</div>
     </div>
 
     <div class="row">
@@ -157,7 +301,7 @@
         <p class="row-title">The market record</p>
         <p class="row-desc">FINRA reported short interest, FINRA average daily volume, price and volume history, and turnover against shares outstanding, set against the filing dates in 2B. Third-party data only.</p>
       </div>
-      <div class="row-status st-hold">Held to Aug 19</div>
+      <div class="row-status st-filed">Published</div>
     </div>
 
     <div class="row">
@@ -183,17 +327,18 @@
     <table>
       <caption>Comment requests — mailed August 11, 2026 · certified, signature required</caption>
       <thead>
-        <tr><th>Recipient</th><th>Attention</th><th>Delivered</th><th>Response due</th></tr>
+        <tr><th>Recipient</th><th>Attention</th><th>Delivered</th><th>Response due</th><th>Response</th></tr>
       </thead>
       <tbody>
-        <tr><td>Theriva Biologics, Inc.</td><td>Chief Executive Officer; Corporate Secretary</td><td class="dt">Aug 12, 2026</td><td class="dt">Aug 19, 2026</td></tr>
-        <tr><td>A.G.P. / Alliance Global Partners</td><td>Chief Compliance Officer</td><td class="dt">Aug 12, 2026</td><td class="dt">Aug 19, 2026</td></tr>
-        <tr><td>Blank Rome LLP</td><td>Leslie Marlow</td><td class="dt">Aug 12, 2026</td><td class="dt">Aug 19, 2026</td></tr>
-        <tr><td>Empery Asset Management, LP</td><td>Managing Members</td><td class="dt">Aug 12, 2026</td><td class="dt">Aug 19, 2026</td></tr>
+        <tr><td>Theriva Biologics, Inc.</td><td>Chief Executive Officer; Corporate Secretary</td><td class="dt">Aug 12, 2026</td><td class="dt">Aug 20, 2026</td><td class="dt">&mdash;</td></tr>
+        <tr><td>A.G.P. / Alliance Global Partners</td><td>Chief Compliance Officer</td><td class="dt">Aug 12, 2026</td><td class="dt">Aug 19, 2026</td><td class="dt">&mdash;</td></tr>
+        <tr><td>Blank Rome LLP</td><td>Leslie Marlow</td><td class="dt">Aug 12, 2026</td><td class="dt">Aug 19, 2026</td><td class="dt">&mdash;</td></tr>
+        <tr><td>Empery Asset Management, LP</td><td>Managing Members</td><td class="dt">Aug 12, 2026</td><td class="dt">Aug 19, 2026</td><td class="dt">&mdash;</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="note">Responses received will be posted here in full. Where no response is received, that will be stated.</p>
+  <p class="note">Responses received will be posted here in full. Where no response is received, that will be stated.
+     <!-- ⚠ MARK — fill the Response column. Theriva's window ran a day behind through no act of its own; that belongs in print. --></p>
 </section>
 
 <hr class="rule">
@@ -223,8 +368,7 @@
 
     <p class="disclaimer">EDGAR filer information is provided solely to identify the author as a registered filer and prior Form 13H registrant. It is not an endorsement, approval, or finding by the Securities and Exchange Commission regarding this site or its contents. Nothing on this site is investment advice or a recommendation to buy or sell any security. Illustrative calculations are presented to explain the possible economic implications of disclosed transactions; they do not establish that any person realized any illustrated result.</p>
     <p class="build-stamp" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-2);margin-top:20px;padding-top:14px;border-top:1px solid var(--rule-2)">
-      Built by Mark Nejmeh · 2026-08-12 · schema 1.0 · Triggered Short™ is his own term<br>
-     
+      Built by Mark Nejmeh · Triggered Short™ is his own term
     </p>
   </div>
 </footer>
@@ -235,6 +379,159 @@
     body:JSON.stringify({path:location.pathname,ref:document.referrer||''}),
     keepalive:true}).catch(function(){});
 }catch(e){}})();
+</script>
+
+<script>
+(function(){
+  var APP = 'https://8kzip.com';
+
+  var esc = function(s){ return String(s==null?'':s).replace(/[&<>"']/g,
+    function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+
+  var pct = function(v){
+    if (v === null || v === undefined || v === '') return '<span class="num">&mdash;</span>';
+    var n = Number(v);
+    return '<span class="num ' + (n < 0 ? 'neg' : 'pos') + '">' +
+           (n > 0 ? '+' : '') + n.toFixed(1) + '%</span>';
+  };
+
+  var instrument = function(m){
+    return ({
+      warrant_inducement: 'Warrant inducement',
+      warrant_issuance:   'Warrants with a raise',
+      convertible:        'Convertible note',
+      discounted_placement:'Discounted placement',
+      pipe:               'PIPE',
+      atm:                'At-the-market',
+      customer_warrant:   'Customer warrant'
+    })[m] || (m || '&mdash;');
+  };
+
+  var get = function(p){
+    return fetch(p, { headers:{ 'accept':'application/json' } }).then(function(r){
+      return r.text().then(function(t){
+        try { return JSON.parse(t); }
+        catch(e){ throw new Error('The server returned ' + r.status + ' for ' + p + '.'); }
+      });
+    });
+  };
+
+  /* ---------- the six tests ---------- */
+  function loadTests(){
+    var b = document.getElementById('testbody');
+    get('/api/db?table=detection_tests').then(function(d){
+      var rows = (d.rows || d.results || []);
+      if (!rows.length) { b.innerHTML = '<tr><td colspan="3" class="busy">No tests on file yet.</td></tr>'; return; }
+      b.innerHTML = rows.map(function(t){
+        return '<tr><td>' + esc(t.test_no) + '</td>' +
+               '<td><b>' + esc(t.short_name) + '</b><br>' + esc(t.question) +
+               '<span class="src">Read it in: ' + esc(t.source_document) + '</span></td>' +
+               '<td>' + esc(t.what_fails) + '</td></tr>';
+      }).join('');
+    }).catch(function(e){
+      b.innerHTML = '<tr><td colspan="3" class="busy">Could not load the tests. ' + esc(e.message) + '</td></tr>';
+    });
+  }
+
+  /* ---------- detected ---------- */
+  function loadDetected(){
+    var b = document.getElementById('detbody');
+    get('/api/db?view=v_detected').then(function(d){
+      var rows = (d.rows || d.results || []);
+      if (!rows.length) { b.innerHTML = '<tr><td colspan="8" class="empty">Nothing on the list yet.</td></tr>'; return; }
+      b.innerHTML = rows.map(function(r){
+        var since = [];
+        if (r.reverse_split_since) since.push('reverse split');
+        if (r.financings_since) since.push(r.financings_since + ' more raise' + (r.financings_since > 1 ? 's' : ''));
+        if (r.listing_status && r.listing_status !== 'listed') since.push(esc(r.listing_status));
+        return '<tr>' +
+          '<td class="tk">' + esc(r.ticker) + '</td>' +
+          '<td>' + instrument(r.mechanism) + '</td>' +
+          '<td class="dt">' + esc(r.event_date) + '</td>' +
+          '<td class="num"><span class="badge fail">' + esc(r.tests_failed) + ' of 6</span></td>' +
+          '<td class="num">' + pct(r.chg_90d_pct) + '</td>' +
+          '<td class="num">' + pct(r.chg_1y_pct) + '</td>' +
+          '<td>' + (since.length ? since.join(' · ') : '&mdash;') + '</td>' +
+          '<td><a href="' + APP + '/' + esc(r.ticker) + '">Follow &rarr;</a></td>' +
+        '</tr>';
+      }).join('');
+    }).catch(function(e){
+      b.innerHTML = '<tr><td colspan="8" class="busy">Could not load the list. ' + esc(e.message) + '</td></tr>';
+    });
+  }
+
+  /* ---------- cleared ---------- */
+  function loadCleared(){
+    var b = document.getElementById('clrbody');
+    get('/api/db?view=v_cleared').then(function(d){
+      var rows = (d.rows || d.results || []);
+      if (!rows.length) { b.innerHTML = '<tr><td colspan="6" class="empty">Nothing cleared yet.</td></tr>'; return; }
+      b.innerHTML = rows.map(function(r){
+        return '<tr>' +
+          '<td class="tk">' + esc(r.ticker) + '</td>' +
+          '<td>' + instrument(r.mechanism) + '</td>' +
+          '<td class="dt">' + esc(r.event_date) + '</td>' +
+          '<td class="num"><span class="badge clear">0 of 6</span></td>' +
+          '<td class="num">' + pct(r.chg_1y_pct) + '</td>' +
+          '<td>' + esc(r.notes || '') + '</td>' +
+        '</tr>';
+      }).join('');
+    }).catch(function(e){
+      b.innerHTML = '<tr><td colspan="6" class="busy">Could not load the list. ' + esc(e.message) + '</td></tr>';
+    });
+  }
+
+  /* ---------- the search box ---------- */
+  function look(){
+    var t = (document.getElementById('tk').value || '').toUpperCase().replace(/[^A-Z.\-]/g,'').slice(0,8);
+    var out = document.getElementById('result');
+    if (!t) { return; }
+    document.getElementById('tk').value = t;
+    out.hidden = false;
+    out.innerHTML = '<div class="res none"><p class="busy">Reading the filings for ' + esc(t) + '…</p></div>';
+
+    get('/api/lookup?ticker=' + encodeURIComponent(t)).then(function(d){
+      var r = (d.rows && d.rows[0]) || d.detection || null;
+
+      if (!r) {
+        out.innerHTML =
+          '<div class="res none">' +
+            '<h3>' + esc(t) + ' has not been screened.</h3>' +
+            '<p class="meta">Nobody has run the six questions on this one yet.</p>' +
+            '<p>The filings are public and the questions are the same for every company. ' +
+               'A screen takes real reading, so it is the one thing here that costs money.</p>' +
+            '<a class="go" href="' + APP + '/screen?ticker=' + esc(t) + '">Request a screen &rarr;</a>' +
+          '</div>';
+        return;
+      }
+
+      var failed = Number(r.tests_failed || 0);
+      var cls = failed === 0 ? 'clear' : 'fail';
+      out.innerHTML =
+        '<div class="res ' + cls + '">' +
+          '<h3>' + esc(r.ticker) + (r.company_name ? ' &mdash; ' + esc(r.company_name) : '') + '</h3>' +
+          '<p class="meta">' + instrument(r.mechanism) + ' &middot; ' + esc(r.event_date) +
+            ' &middot; <span class="badge ' + cls + '">' + failed + ' of 6 failed</span></p>' +
+          (r.notes ? '<p>' + esc(r.notes) + '</p>' : '') +
+          (r.report_url ? '<a class="go" href="' + esc(r.report_url) + '">Read the report &rarr;</a> ' : '') +
+          '<a class="go" href="' + APP + '/' + esc(r.ticker) + '">Follow this company &rarr;</a>' +
+        '</div>';
+    }).catch(function(e){
+      out.innerHTML = '<div class="res none"><p class="busy">' + esc(e.message) + '</p></div>';
+    });
+  }
+
+  document.getElementById('go').addEventListener('click', look);
+  document.getElementById('tk').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') look();
+  });
+
+  /* deep link: /?q=TOVX */
+  var q = new URLSearchParams(location.search).get('q');
+  if (q) { document.getElementById('tk').value = q.toUpperCase(); look(); }
+
+  loadTests(); loadDetected(); loadCleared();
+})();
 </script>
 </body>
 </html>
