@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The warrant wire — Triggered Short</title>
+<meta name="description" content="Every filing that carries warrant financing language, as it is filed. A match is not a finding — it means the document is worth reading.">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .ww{max-width:1000px;margin:0 auto;padding:0 20px 70px}
+  .ww-lead{font-size:16px;line-height:1.6;color:#3d3d38;max-width:70ch;margin:0 0 18px}
+  .ww-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+    border-top:1px solid #d8d8d1;border-bottom:1px solid #d8d8d1;padding:11px 0;margin:0 0 6px}
+  .ww-bar button{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;
+    border:1px solid #d8d8d1;background:#fff;color:#4a4a44;padding:6px 12px;border-radius:2px;cursor:pointer}
+  .ww-bar button.on{background:#1f2019;border-color:#1f2019;color:#f4f2ec}
+  .ww-bar .ct{margin-left:auto;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#6b6b66}
+  .ww-note{font-size:12.5px;color:#6b6b66;line-height:1.55;margin:0 0 20px;max-width:78ch}
+  .ww-row{background:#fff;border:1px solid #d8d8d1;border-radius:4px;padding:13px 16px;margin:0 0 9px;
+    display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:14px;align-items:start}
+  .ww-row.heavy{border-left:3px solid #8a1c1c}
+  .ww-d{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#6b6b66}
+  .ww-d b{display:block;color:#1f2019;font-size:12.5px}
+  .ww-co{font-size:15.5px;line-height:1.35;margin:0}
+  .ww-meta{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8a8b80;margin:3px 0 0}
+  .ww-marks{margin:8px 0 0}
+  .ww-m{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.05em;
+    border:1px solid #e0ddd3;background:#faf9f5;color:#5c5d53;padding:2px 7px;border-radius:2px;margin:0 4px 4px 0}
+  .ww-m.h{background:#fdf4f3;border-color:#e3c9c6;color:#8a1c1c}
+  .ww-act{text-align:right}
+  .ww-act a{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+    border:1px solid #cfe0d6;background:#f1f5f2;color:#1f6b4f;padding:5px 10px;border-radius:2px;
+    text-decoration:none;margin-bottom:5px}
+  .ww-act a:hover{background:#1f6b4f;color:#fff}
+  .ww-act .price{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8a6a1c}
+  .ww-empty{background:#fff;border:1px solid #d8d8d1;padding:22px;text-align:center;color:#6b6b66;font-size:14px}
+  .ww-legend{background:#fff;border:1px solid #d8d8d1;border-left:3px solid #8a6a1c;padding:14px 18px;
+    margin:24px 0 0;font-size:13px;line-height:1.6;color:#4a4a44;max-width:76ch}
+  .ww-legend b{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.13em;
+    text-transform:uppercase;color:#8a6a1c;display:block;margin-bottom:5px}
+  @media(max-width:700px){ .ww-row{grid-template-columns:1fr;gap:6px} .ww-act{text-align:left} }
+</style>
+</head>
+<body>
+<div class="ww">
+
+  <p class="motto"><em>"It's never as it seems." — Mark Nejmeh</em></p>
+
+  <p style="font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.15em;
+     text-transform:uppercase;color:#6b6b66;margin:22px 0 6px">The wire</p>
+  <h1 style="font-size:30px;font-weight:600;margin:0 0 12px">Warrants and financings, as they are filed</h1>
+
+  <p class="ww-lead">Every filing whose text carries the language of a warrant financing — a price
+  reset, a cashless exercise clause, an ownership blocker, an inducement. We read the documents, not
+  the press releases, and the exhibit is where the terms live.</p>
+
+  <div class="ww-bar">
+    <button class="on" data-d="14">14 days</button>
+    <button data-d="30">30 days</button>
+    <button data-d="90">90 days</button>
+    <button data-h="1">Heavy marks only</button>
+    <span class="ct" id="ct"></span>
+  </div>
+
+  <p class="ww-note"><b>A match is not a finding.</b> This language is ordinary and lawful, and most
+  of these deals are unremarkable. A filing appears here because the document is worth reading —
+  nothing on this page says a company or any person did anything wrong.</p>
+
+  <div id="rows"><div class="ww-empty">Loading the wire…</div></div>
+
+  <div class="ww-legend">
+    <b>What the marks mean</b>
+    <b style="display:inline;color:#8a1c1c;letter-spacing:0;font-size:13px;text-transform:none">Price
+    reset</b> — the exercise price falls if the company later sells stock cheaper.
+    <b style="display:inline;color:#8a1c1c;letter-spacing:0;font-size:13px;text-transform:none">Cashless
+    exercise</b> — shares issue with no cash to the company.
+    <b style="display:inline;color:#8a1c1c;letter-spacing:0;font-size:13px;text-transform:none">Ownership
+    blocker</b> — the holder is capped below the level that would require an ownership filing.
+    <b style="display:inline;color:#8a1c1c;letter-spacing:0;font-size:13px;text-transform:none">Warrant
+    inducement</b> — existing holders are paid a lower price to exercise early, usually in exchange for
+    new warrants. <a href="how-it-works.html" style="color:#1f6b4f">How this can work →</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var API = "https://triggeredshort-wire.realroofers.workers.dev";
+  var days = 14, heavy = 0;
+
+  document.querySelectorAll(".ww-bar button").forEach(function(b){
+    b.addEventListener("click", function(){
+      if (b.dataset.d) {
+        days = +b.dataset.d;
+        document.querySelectorAll(".ww-bar button[data-d]").forEach(function(x){ x.classList.remove("on"); });
+        b.classList.add("on");
+      } else {
+        heavy = heavy ? 0 : 1;
+        b.classList.toggle("on");
+      }
+      load();
+    });
+  });
+
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  function load(){
+    document.getElementById("rows").innerHTML = '<div class="ww-empty">Loading…</div>';
+    fetch(API + "?wire=1&days=" + days + (heavy ? "&heavy=1" : ""))
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (!d.ok) throw new Error(d.error || "no data");
+        document.getElementById("ct").textContent =
+          d.filings + " filings since " + d.since;
+        var rows = d.rows || [];
+        if (!rows.length) {
+          document.getElementById("rows").innerHTML =
+            '<div class="ww-empty">Nothing on the wire in this window. That is the record as it stands.</div>';
+          return;
+        }
+        document.getElementById("rows").innerHTML = rows.map(card).join("");
+      })
+      .catch(function(e){
+        document.getElementById("rows").innerHTML =
+          '<div class="ww-empty">Could not load the wire right now.</div>';
+      });
+  }
+
+  function card(f){
+    var labels = (f.labels || "").split(" | ").filter(function(x,i,a){ return x && a.indexOf(x)===i; });
+    var heavySet = ["Price reset","Cashless exercise","Warrant inducement","Inducement agreement",
+                    "Reduced exercise price","Variable rate transaction","Equity line"];
+    var marks = labels.map(function(l){
+      return '<span class="ww-m' + (heavySet.indexOf(l)>-1 ? ' h' : '') + '">' + esc(l) + '</span>';
+    }).join("");
+
+    return '<div class="ww-row' + (f.heavy ? ' heavy' : '') + '">'
+      + '<div class="ww-d"><b>' + esc(f.filed_on || "") + '</b>' + esc(f.form || "") + '</div>'
+      + '<div><p class="ww-co">' + esc(f.company || "") + '</p>'
+      +   '<p class="ww-meta">' + esc(f.accession) + (f.cik ? ' · CIK ' + esc(f.cik) : '') + '</p>'
+      +   '<div class="ww-marks">' + marks + '</div></div>'
+      + '<div class="ww-act">'
+      +   (f.doc_url ? '<a href="' + esc(f.doc_url) + '" target="_blank" rel="noopener">The filing ↗</a><br>' : '')
+      +   '<a href="#">Read it in plain English</a>'
+      +   '<span class="price">$11</span>'
+      + '</div></div>';
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>
