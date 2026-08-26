@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What happened next — Triggered Short</title>
+<meta name="description" content="Every finding we have published, dated, and everything that has happened since — recorded whether it supports the finding or not.">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .tk-wrap{max-width:960px;margin:0 auto;padding:0 20px 70px}
+  .tk-lead{font-size:16px;line-height:1.6;color:#3d3d38;max-width:68ch;margin:0 0 20px}
+  .tk-counts{display:flex;gap:22px;flex-wrap:wrap;border-top:1px solid #d8d8d1;
+    border-bottom:1px solid #d8d8d1;padding:12px 0;margin:0 0 24px}
+  .tk-counts div{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .tk-counts b{display:block;font-size:22px;font-weight:600}
+  .tk-counts span{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#6b6b66}
+  .tk-card{background:#fff;border:1px solid #d8d8d1;border-radius:4px;margin:0 0 18px;overflow:hidden}
+  .tk-head{padding:15px 20px;border-bottom:1px solid #eceae4;display:flex;gap:12px;
+    align-items:baseline;flex-wrap:wrap}
+  .tk-tk{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;font-size:17px}
+  .tk-co{color:#6b6b66;font-size:14px}
+  .tk-badge{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:2px;border:1px solid}
+  .b-open{background:#faf7ef;border-color:#e8dcbf;color:#8a6a1c}
+  .b-res{background:#f1f5f2;border-color:#cfe0d6;color:#1f6b4f}
+  .b-none{background:#fff;border-color:#d8d8d1;color:#8a8b80}
+  .tk-when{margin-left:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11.5px;color:#6b6b66}
+  .tk-body{padding:16px 20px}
+  .tk-hl{font-size:18px;line-height:1.45;margin:0 0 8px}
+  .tk-dt{font-size:14.5px;line-height:1.6;color:#4a4a44;margin:0 0 14px;max-width:70ch}
+  .tk-src{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;color:#1f6b4f;
+    padding:8px 0;border-top:1px solid #eceae4;border-bottom:1px solid #eceae4;margin:0 0 14px}
+  .tk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:0 0 14px}
+  .tk-cell{border:1px solid #eceae4;border-radius:3px;padding:9px 11px}
+  .tk-cell span{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:#8a8b80;margin-bottom:3px}
+  .tk-cell b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px}
+  .tk-sec{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:#6b6b66;margin:18px 0 8px;padding-top:12px;border-top:1px solid #eceae4}
+  .tk-ev{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:9px 0;border-top:1px solid #f2f0ea}
+  .tk-ev:first-of-type{border-top:0}
+  .tk-ev .d{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;color:#6b6b66}
+  .tk-ev p{margin:0;font-size:14px;line-height:1.5}
+  .tk-ev small{display:block;color:#6b6b66;font-size:12.5px;margin-top:3px}
+  .tk-kind{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9.5px;
+    letter-spacing:.09em;text-transform:uppercase;color:#8a8b80;border:1px solid #e3e1d9;
+    padding:1px 6px;border-radius:2px;margin-left:6px}
+  .k-confirms{color:#8a1c1c;border-color:#e3c9c6;background:#fdf6f5}
+  .k-against{color:#1f6b4f;border-color:#cfe0d6;background:#f1f5f2}
+  .tk-watch{background:#faf9f5;border-left:3px solid #6b6b66;padding:11px 14px;margin:14px 0 0;
+    font-size:13.5px;line-height:1.55;max-width:70ch}
+  .tk-watch b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;color:#6b6b66;display:block;margin-bottom:3px}
+  .tk-wrong{border-left-color:#8a6a1c;background:#faf7ef}
+  .tk-wrong b{color:#8a6a1c}
+  .tk-quiet{padding:16px 20px;font-size:14px;color:#6b6b66;background:#faf9f5}
+  .tk-note{border:1px solid #d8d8d1;border-left:3px solid #1f6b4f;background:#fff;padding:14px 18px;
+    margin:26px 0 0;font-size:13.5px;line-height:1.6;max-width:72ch}
+  .tk-note b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;color:#1f6b4f;display:block;margin-bottom:4px}
+  @media(max-width:640px){ .tk-ev{grid-template-columns:1fr;gap:2px} .tk-when{margin-left:0} }
+</style>
+</head>
+<body>
+
+<div class="tk-wrap">
+
+  <p class="motto"><em>"It's never as it seems." — Mark Nejmeh</em></p>
+
+  <p class="eyebrow" style="font-family:ui-monospace,Menlo,monospace;font-size:11px;
+     letter-spacing:.15em;text-transform:uppercase;color:#6b6b66;margin:22px 0 6px">The record</p>
+  <h1 style="font-size:30px;font-weight:600;margin:0 0 12px">What happened next</h1>
+
+  <p class="tk-lead">Every finding published on this site, with the date it was identified and
+  everything recorded since. <b>A finding is a documented condition, not a prediction.</b> What
+  follows is filed whether it supports the finding or not, and a finding where nothing has happened
+  stays on this page and says so.</p>
+
+  <div class="tk-counts" id="counts"></div>
+  <div id="list"><p class="tk-quiet">Loading…</p></div>
+
+  <div class="tk-note">
+    <b>How to read this page</b>
+    Each entry states what was found, the filing and the section it came from, and the figures on the
+    day it was identified. Underneath is a dated timeline of what has happened since. Where an event
+    cuts against the finding it is marked as such and left in place. Nothing on this page is
+    investment advice, and no finding alleges that anyone broke any law.
+  </div>
+</div>
+
+<script>
+(function(){
+  var API = "/api/findings";
+
+  fetch(API).then(function(r){ return r.json(); }).then(function(d){
+    if(!d.ok) throw new Error(d.error || "no data");
+    counts(d.counts);
+    var out = "";
+    (d.findings || []).forEach(function(f){ out += card(f); });
+    document.getElementById("list").innerHTML =
+      out || '<p class="tk-quiet">No findings published yet.</p>';
+    (d.findings || []).forEach(function(f){ timeline(f.id); });
+  }).catch(function(e){
+    document.getElementById("list").innerHTML =
+      '<p class="tk-quiet">Could not load the record right now. ' + String(e) + '</p>';
+  });
+
+  function counts(c){
+    if(!c) return;
+    document.getElementById("counts").innerHTML =
+      cell(c.total,"findings published") +
+      cell(c.open,"still open") +
+      cell(c.resolved,"resolved") +
+      cell(c.no_events,"nothing recorded since");
+  }
+  function cell(n,l){ return '<div><b>'+(n||0)+'</b><span>'+l+'</span></div>'; }
+
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function money(n){ return n==null ? "—" : "$"+Number(n).toLocaleString(); }
+  function px(n){ return n==null ? "—" : "$"+Number(n).toFixed(4); }
+  function num(n){ return n==null ? "—" : Number(n).toLocaleString(); }
+
+  function card(f){
+    var badge = !f.events ? '<span class="tk-badge b-none">nothing recorded yet</span>'
+              : f.status === "resolved" ? '<span class="tk-badge b-res">resolved</span>'
+              : '<span class="tk-badge b-open">open</span>';
+
+    var move = (f.px_at && f.px_now)
+      ? (((f.px_now - f.px_at)/f.px_at)*100).toFixed(1) + "%" : "—";
+
+    return '<div class="tk-card" id="f'+f.id+'">'
+      + '<div class="tk-head"><span class="tk-tk">'+esc(f.ticker)+'</span>'
+      +   '<span class="tk-co">'+esc(f.company||"")+'</span>'+badge
+      +   '<span class="tk-when">identified '+esc(f.identified_on)+' · '
+      +      (f.days_since||0)+' days ago</span></div>'
+      + '<div class="tk-body">'
+      +   '<p class="tk-hl">'+esc(f.headline)+'</p>'
+      +   (f.detail ? '<p class="tk-dt">'+esc(f.detail)+'</p>' : '')
+      +   '<div class="tk-src">'+esc(f.source_form||"")+' · '+esc(f.source_accession||"")
+      +     (f.source_section ? ' · '+esc(f.source_section) : '')
+      +     (f.report_url ? ' · <a href="'+esc(f.report_url)+'" style="color:#1f6b4f">Report '
+      +        esc(f.report_no||"")+'</a>' : '')+'</div>'
+      +   '<div class="tk-grid">'
+      +     box("price when identified", px(f.px_at))
+      +     box("price now", px(f.px_now))
+      +     box("change since", move)
+      +     box("warrants outstanding then", num(f.warrants_at))
+      +     box("market value then", money(f.mcap_at))
+      +     box("events recorded", (f.events||0))
+      +   '</div>'
+      +   '<div id="tl'+f.id+'"></div>'
+      +   (f.watch_for ? '<div class="tk-watch"><b>What we are watching</b>'+esc(f.watch_for)+'</div>' : '')
+      +   (f.would_be_wrong ? '<div class="tk-watch tk-wrong"><b>What would make this wrong</b>'
+      +      esc(f.would_be_wrong)+'</div>' : '')
+      + '</div></div>';
+  }
+
+  function box(l,v){ return '<div class="tk-cell"><span>'+l+'</span><b>'+v+'</b></div>'; }
+
+  function timeline(id){
+    fetch(API+"?id="+id).then(function(r){ return r.json(); }).then(function(d){
+      var el = document.getElementById("tl"+id);
+      if(!el || !d.ok) return;
+      var ev = d.timeline || [];
+      if(!ev.length){
+        el.innerHTML = '<p class="tk-sec">Since it was identified</p>'
+          + '<p class="tk-quiet" style="padding:8px 0;background:none">Nothing has been recorded '
+          + 'since this finding was published. That is the record as it stands.</p>';
+        return;
+      }
+      var out = '<p class="tk-sec">Since it was identified — '+ev.length+' events</p>';
+      ev.forEach(function(e){
+        var k = e.bearing === "confirms" ? "k-confirms"
+              : e.bearing === "against"  ? "k-against" : "";
+        out += '<div class="tk-ev"><div class="d">'+esc(e.happened_on)+'</div><div>'
+            +  '<p>'+esc(e.headline)
+            +    '<span class="tk-kind '+k+'">'+esc(e.bearing==="against"?"cuts against":e.kind)+'</span></p>'
+            +  (e.detail ? '<small>'+esc(e.detail)+'</small>' : '')
+            +  (e.source_accession ? '<small style="font-family:ui-monospace,Menlo,monospace">'
+            +     esc(e.source_form||"")+' · '+esc(e.source_accession)+'</small>' : '')
+            +  '</div></div>';
+      });
+      el.innerHTML = out;
+    }).catch(function(){});
+  }
+})();
+</script>
+</body>
+</html>
