@@ -1,3 +1,4 @@
+<!-- BUILT 2026-08-26 19:31 ET -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,14 +130,16 @@
 <nav class="docket-nav">
   <div class="nav-inner">
     <a href="index.html" aria-current="page">Docket</a>
+    <a href="warrants.html">The wire</a>
+    <a href="track.html">What happened next</a>
+    <a href="reports.html">Reports</a>
     <a href="chronology.html">Chronology</a>
     <a href="data.html">Market data</a>
     <a href="model.html">Calculator</a>
     <a href="example.html">Example</a>
-    <a href="forms.html">SEC codes</a>
     <a href="records.html">Records</a>
     <a href="exhibits.html">Exhibits</a>
-    <a href="reports.html">Reports</a>
+    <a href="how-it-works.html">How it works</a>
     <a href="method.html">Method</a>
   </div>
 </nav>
@@ -163,6 +166,23 @@
 
   <div id="result" hidden></div>
 </section>
+
+<!-- ============================================================
+     1b · THE WIRE — five most recent, then the count behind them
+     ============================================================ -->
+<section>
+  <p class="eyebrow">The wire &middot; updated every night</p>
+  <h2>Warrant financings, as they are filed</h2>
+  <p class="lede">We read the full text of every filing, exhibits included, and record the ones
+     carrying the language of a warrant financing &mdash; a price that resets, shares that issue
+     without cash, a holder capped below the level that would require them to file.
+     <a href="how-it-works.html">How this can work &rarr;</a></p>
+
+  <div data-wire="5" data-days="14" data-title="Filed in the last 14 days"
+       data-link="warrants.html"></div>
+</section>
+
+<hr class="rule">
 
 <!-- ============================================================
      2 · THE SIX TESTS — the standard, before anyone is measured by it
@@ -201,7 +221,9 @@
   <p class="eyebrow">Detected</p>
   <h2>Companies whose filings failed one or more tests</h2>
   <p class="lede">Each row links to the filing it came from. The outcome columns record what
-     happened afterward, whichever way it went.</p>
+     happened afterward, whichever way it went &mdash; and
+     <a href="track.html">what happened next</a> carries every finding with the dated record of
+     everything since, including the ones where nothing has happened at all.</p>
 
   <div class="table-wrap">
     <table class="listing">
@@ -462,5 +484,6 @@
   loadTests(); loadDetected(); loadCleared();
 })();
 </script>
+<script src="/wire-embed.js"></script>
 </body>
 </html>
