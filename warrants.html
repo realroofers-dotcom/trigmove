@@ -1,3 +1,4 @@
+<!-- BUILT 2026-08-26 18:50 ET -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,16 @@
     text-decoration:none;margin-bottom:5px}
   .ww-act a:hover{background:#1f6b4f;color:#fff}
   .ww-act .price{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8a6a1c}
-  .ww-empty{background:#fff;border:1px solid #d8d8d1;padding:22px;text-align:center;color:#6b6b66;font-size:14px}
+  .ww-gate{background:#fff;border:1px solid #d8d8d1;border-left:3px solid #8a6a1c;
+  border-radius:0 4px 4px 0;padding:18px 22px;margin:14px 0 0}
+.ww-gate b{display:block;font-size:19px;color:#1f2019;margin-bottom:5px}
+.ww-gate p{margin:0 0 14px;font-size:14px;line-height:1.6;color:#4a4a44;max-width:66ch}
+.ww-gate p b{display:inline;font-size:14px}
+.ww-gate a{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:12px;
+  letter-spacing:.05em;background:#8a6a1c;border:1px solid #8a6a1c;color:#fff;
+  padding:9px 16px;border-radius:3px;text-decoration:none}
+.ww-gate a:hover{opacity:.9}
+.ww-empty{background:#fff;border:1px solid #d8d8d1;padding:22px;text-align:center;color:#6b6b66;font-size:14px}
   .ww-legend{background:#fff;border:1px solid #d8d8d1;border-left:3px solid #8a6a1c;padding:14px 18px;
     margin:24px 0 0;font-size:13px;line-height:1.6;color:#4a4a44;max-width:76ch}
   .ww-legend b{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.13em;
@@ -111,15 +121,28 @@
       .then(function(r){ return r.json(); })
       .then(function(d){
         if (!d.ok) throw new Error(d.error || "no data");
+        var all = d.rows || [];
+        var FREE = 5;
+        var rows = all.slice(0, FREE);
+        var behind = all.length - rows.length;
         document.getElementById("ct").textContent =
-          d.filings + " filings since " + d.since;
-        var rows = d.rows || [];
+          all.length + " filings since " + d.since;
         if (!rows.length) {
           document.getElementById("rows").innerHTML =
             '<div class="ww-empty">Nothing on the wire in this window. That is the record as it stands.</div>';
           return;
         }
-        document.getElementById("rows").innerHTML = rows.map(card).join("");
+        var html = rows.map(card).join("");
+        if (behind > 0) {
+          html += '<div class="ww-gate">'
+               +   '<b>+' + behind + ' more — get the service</b>'
+               +   '<p>Everyone sees the five most recent, every time. The rest of the wire — '
+               +   'every company, every mark, every day — is <b>$60 a year</b>. '
+               +   'We make evaluation of filings easy. That is the service.</p>'
+               +   '<a href="#alerts">Get the service · $60/yr</a>'
+               + '</div>';
+        }
+        document.getElementById("rows").innerHTML = html;
       })
       .catch(function(e){
         document.getElementById("rows").innerHTML =
