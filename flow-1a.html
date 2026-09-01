@@ -1,0 +1,301 @@
+<!-- BUILT 2026-09-01 12:44 ET -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How the three sites work together</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C1220; --paper:#fff; --wash:#F4F5F8; --rule:#D5DAE4; --muted:#5A6478;
+  --ts:#12355B;      /* triggeredshort navy */
+  --ww:#8A6A1C;      /* warrant wire gold */
+  --k8:#00208B;      /* 8k10q navy */
+  --hot:#FF4A00;
+  --good:#0A7A3C;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:400 16px/1.55 Rubik,system-ui,sans-serif;-webkit-print-color-adjust:exact;
+  print-color-adjust:exact}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-weight:900;letter-spacing:-.022em;line-height:1.1;margin:0}
+p{margin:0 0 1em}
+.eyebrow{font:900 10.5px/1 Rubik;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--hot);margin:0 0 9px}
+
+header{background:var(--ink);color:#fff;padding:36px 0 40px}
+header h1{font-size:clamp(26px,4.6vw,40px)}
+header p{color:#B9C2D6;margin-top:12px;max-width:60ch}
+
+section{padding:34px 0;border-bottom:1px solid var(--rule)}
+h2{font-size:clamp(20px,3.2vw,27px);margin-bottom:8px}
+.lede{color:var(--muted);max-width:62ch;margin-bottom:22px}
+
+svg{width:100%;height:auto;display:block}
+.figure{border:1px solid var(--rule);border-radius:12px;padding:8px;background:#fff}
+
+/* the three sites, as cards */
+.three{display:grid;gap:12px}
+@media(min-width:820px){.three{grid-template-columns:repeat(3,1fr)}}
+.site{border:2px solid var(--rule);border-radius:12px;padding:20px;background:#fff}
+.site.ts{border-color:var(--ts)}
+.site.ww{border-color:var(--ww)}
+.site.k8{border-color:var(--k8)}
+.site .n{font:900 11px/1 Rubik;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:10px}
+.site.ts .n{color:var(--ts)} .site.ww .n{color:var(--ww)} .site.k8 .n{color:var(--k8)}
+.site h3{font-size:19px;margin-bottom:8px}
+.site p{font-size:14.5px;color:#39415A;margin:0 0 12px}
+.site .job{font:700 13px var(--mono);background:var(--wash);border-radius:6px;
+  padding:9px 11px;margin:0 0 12px;line-height:1.5}
+.site .pay{font:700 13.5px var(--mono)}
+.site.ts .pay{color:var(--muted)}
+.site.ww .pay{color:var(--ww)} .site.k8 .pay{color:var(--k8)}
+
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;background:var(--wash);padding:10px 12px;
+  font:900 10px/1 Rubik;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+td{border-bottom:1px solid var(--rule);padding:12px}
+td.d{font-family:var(--mono);font-size:13.5px}
+td b{display:block}
+
+.rules{display:grid;gap:10px}
+@media(min-width:760px){.rules{grid-template-columns:1fr 1fr}}
+.rule{background:var(--wash);border-left:4px solid var(--hot);padding:14px 16px;
+  font-size:14.5px;line-height:1.55}
+.rule b{display:block;margin-bottom:3px}
+
+.miss{border:1.5px dashed #C9A227;border-radius:10px;padding:16px 18px;
+  background:#FFFBF0;font-size:14.5px}
+.miss b{display:block;margin-bottom:6px}
+.miss ul{margin:0;padding-left:1.1em}
+.miss li{margin-bottom:5px}
+footer{padding:24px 0 60px;font-size:13.5px;color:var(--muted)}
+@media print{
+  header{background:#fff;color:#000}
+  header p{color:#333}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">The three sites</p>
+    <h1>Where a person lands, and where the money is.</h1>
+    <p>One person, one question — <i>is my company doing this to me?</i> Three sites,
+    each with one job, each handing him to the next.</p>
+  </div>
+</header>
+
+<!-- ============ 1 · THE THREE JOBS ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">One job each</p>
+    <h2>What each site is for</h2>
+    <p class="lede">If a site is doing two of these, it is doing one of them badly.</p>
+
+    <div class="three">
+      <div class="site ts">
+        <p class="n">Triggered Short</p>
+        <h3>The concept and the suspects</h3>
+        <p class="job">What a triggered short IS.<br>Who we think is doing it.</p>
+        <p>Explains the pattern and the ten tests. Lists the companies that failed
+        them. TOVX lives here as the worked example, not as the subject.</p>
+        <p class="pay">Free. Sells nothing.</p>
+      </div>
+
+      <div class="site ww">
+        <p class="n">Warrant Wire</p>
+        <h3>Where the paper is</h3>
+        <p class="job">WHICH companies filed<br>warrant language, and when.</p>
+        <p>Every filing the SEC publishes, read for the language of a warrant
+        financing. A list, dated. It does not say what the terms are.</p>
+        <p class="pay">5 free · 10/mo with an email<br>$5/mo or $60/yr</p>
+      </div>
+
+      <div class="site k8">
+        <p class="n">8K10Q</p>
+        <h3>What the paper says</h3>
+        <p class="job">The filing AND the exhibit,<br>in plain English.</p>
+        <p>Somebody reads the document — the reset, the blocker, the coverage,
+        who got paid — and writes what it does to a shareholder.</p>
+        <p class="pay">$11 a filing · $149 a company<br>Memberships above</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · THE FLOW ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The flow</p>
+    <h2>One man, one question</h2>
+    <p class="lede">He owns a stock, it keeps falling on good news, and he has started
+    to wonder why. This is every path from that thought to a payment.</p>
+
+    <div class="figure">
+<svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Rubik, system-ui, sans-serif">
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 z" fill="#5A6478"/>
+    </marker>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 z" fill="#8A6A1C"/>
+    </marker>
+    <marker id="ak" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 z" fill="#00208B"/>
+    </marker>
+    <marker id="am" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 z" fill="#0A7A3C"/>
+    </marker>
+  </defs>
+
+  <!-- the person -->
+  <rect x="380" y="14" width="240" height="52" rx="10" fill="#0C1220"/>
+  <text x="500" y="38" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">A shareholder</text>
+  <text x="500" y="56" text-anchor="middle" fill="#B9C2D6" font-size="12.5">“Why does it keep falling?”</text>
+
+  <line x1="500" y1="66" x2="500" y2="94" stroke="#5A6478" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- triggeredshort -->
+  <rect x="300" y="96" width="400" height="76" rx="10" fill="#fff" stroke="#12355B" stroke-width="2"/>
+  <text x="500" y="120" text-anchor="middle" fill="#12355B" font-size="10.5" font-weight="900" letter-spacing="1.6">TRIGGEREDSHORT.COM</text>
+  <text x="500" y="141" text-anchor="middle" font-size="14.5" font-weight="700">Reads the concept. Types his ticker.</text>
+  <text x="500" y="160" text-anchor="middle" fill="#5A6478" font-size="12.5">Free, and it sells nothing</text>
+
+  <!-- the fork -->
+  <line x1="500" y1="172" x2="500" y2="196" stroke="#5A6478" stroke-width="2"/>
+  <text x="500" y="212" text-anchor="middle" fill="#5A6478" font-size="12" font-weight="700">is it on the list?</text>
+
+  <path d="M500 218 L500 236 L245 236 L245 262" fill="none" stroke="#5A6478" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M500 218 L500 236 L740 236 L740 262" fill="none" stroke="#5A6478" stroke-width="2" marker-end="url(#a)"/>
+  <text x="330" y="231" text-anchor="middle" fill="#0A7A3C" font-size="11.5" font-weight="700">YES — rare</text>
+  <text x="660" y="231" text-anchor="middle" fill="#8F1D24" font-size="11.5" font-weight="700">NO — almost always</text>
+
+  <!-- yes branch -->
+  <rect x="110" y="264" width="270" height="72" rx="10" fill="#F1F6F3" stroke="#0A7A3C" stroke-width="1.5"/>
+  <text x="245" y="288" text-anchor="middle" font-size="14.5" font-weight="700">He sees the finding</text>
+  <text x="245" y="307" text-anchor="middle" fill="#39415A" font-size="12.5">Which tests failed, and the exhibit</text>
+  <text x="245" y="324" text-anchor="middle" fill="#39415A" font-size="12.5">it came from</text>
+
+  <!-- no branch -->
+  <rect x="600" y="264" width="290" height="72" rx="10" fill="#FBF7EE" stroke="#8A6A1C" stroke-width="1.5"/>
+  <text x="745" y="288" text-anchor="middle" font-size="14.5" font-weight="700">“We have not screened it.”</text>
+  <text x="745" y="307" text-anchor="middle" fill="#39415A" font-size="12.5">Not a clean bill of health —</text>
+  <text x="745" y="324" text-anchor="middle" fill="#39415A" font-size="12.5">nobody has looked</text>
+
+  <!-- both to warrant wire -->
+  <path d="M245 336 L245 368 L430 368 L430 396" fill="none" stroke="#8A6A1C" stroke-width="2" marker-end="url(#ag)"/>
+  <path d="M745 336 L745 368 L500 368 L500 396" fill="none" stroke="#8A6A1C" stroke-width="2.5" marker-end="url(#ag)"/>
+
+  <!-- warrant wire -->
+  <rect x="300" y="398" width="400" height="82" rx="10" fill="#fff" stroke="#8A6A1C" stroke-width="2.5"/>
+  <text x="500" y="422" text-anchor="middle" fill="#8A6A1C" font-size="10.5" font-weight="900" letter-spacing="1.6">WARRANTWIRE.COM</text>
+  <text x="500" y="443" text-anchor="middle" font-size="14.5" font-weight="700">Has this company filed warrant paper?</text>
+  <text x="500" y="461" text-anchor="middle" fill="#5A6478" font-size="12.5">The answer is free · five filings free</text>
+  <rect x="372" y="466" width="256" height="24" rx="6" fill="#8A6A1C"/>
+  <text x="500" y="483" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">$5 a month · $60 a year — the whole list</text>
+
+  <!-- to 8k10q -->
+  <line x1="500" y1="490" x2="500" y2="518" stroke="#00208B" stroke-width="2.5" marker-end="url(#ak)"/>
+  <text x="640" y="509" text-anchor="middle" fill="#00208B" font-size="11.5" font-weight="700">“but what does it SAY?”</text>
+
+  <!-- 8k10q -->
+  <rect x="280" y="520" width="440" height="84" rx="10" fill="#fff" stroke="#00208B" stroke-width="2.5"/>
+  <text x="500" y="544" text-anchor="middle" fill="#00208B" font-size="10.5" font-weight="900" letter-spacing="1.6">8K10Q.COM</text>
+  <text x="500" y="565" text-anchor="middle" font-size="14.5" font-weight="700">The filing AND the exhibit, in plain English</text>
+  <text x="500" y="583" text-anchor="middle" fill="#5A6478" font-size="12.5">The reset, the blocker, the coverage, who got paid</text>
+  <rect x="352" y="588" width="296" height="24" rx="6" fill="#00208B"/>
+  <text x="500" y="605" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">$11 a filing · $149 a company · memberships</text>
+
+  <!-- the loop back -->
+  <path d="M280 562 L120 562 L120 300 L110 300" fill="none" stroke="#0A7A3C" stroke-width="1.5"
+        stroke-dasharray="5 4" marker-end="url(#am)"/>
+  <text x="128" y="430" fill="#0A7A3C" font-size="11" font-weight="700" transform="rotate(-90 128 430)">every paid read joins the list, free for the next person</text>
+</svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · THE MONEY ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Where the money is</p>
+    <h2>Two sites sell. One does not.</h2>
+    <p class="lede">Triggered Short earns nothing directly and that is deliberate —
+    it is the argument, and an argument that sells something is a sales pitch.</p>
+
+    <table>
+      <thead><tr><th>Site</th><th>Free</th><th>Paid</th></tr></thead>
+      <tbody>
+        <tr><td class="d" style="color:#12355B"><b>triggeredshort.com</b>the concept</td>
+            <td>All of it — the ten tests, the suspects, the worked example, the glossary</td>
+            <td class="d">nothing</td></tr>
+        <tr><td class="d" style="color:#8A6A1C"><b>warrantwire.com</b>the list</td>
+            <td>The answer to “does this company file warrant paper” · five filings ·
+                ten a month with an email</td>
+            <td class="d">$5/mo · $60/yr</td></tr>
+        <tr><td class="d" style="color:#00208B"><b>8k10q.com</b>the reading</td>
+            <td>The forms reference, the glossary, definitions — the search-traffic door</td>
+            <td class="d">$11 a filing<br>$149 a company<br>memberships</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 4 · THE RULES ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The rules that keep it straight</p>
+    <h2>What each site must never do</h2>
+    <div class="rules">
+      <div class="rule"><b>Warrant Wire never explains a filing.</b>
+        It says where the paper is. The moment it starts telling people what terms
+        mean, nobody pays 8K10Q.</div>
+      <div class="rule"><b>Triggered Short never sells.</b>
+        It hands people across. It carries his position and his filer number, and a
+        page that argues and sells at the same time is worth less at both.</div>
+      <div class="rule"><b>8K10Q never publishes a verdict on a company.</b>
+        It reads documents on request. Findings and suspects belong on
+        Triggered Short, under his byline.</div>
+      <div class="rule"><b>No company is called anything until the exhibit is read.</b>
+        The 8-K said “customary adjustments”; the exhibit held a blocker and a
+        contra-revenue clause. That is the whole business in one sentence.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · WHAT IS MISSING ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Before any of this earns</p>
+    <h2>What is not built</h2>
+    <div class="miss">
+      <b>The flow above works up to the point where somebody pays.</b>
+      <ul>
+        <li><b>Accounts</b> — no login anywhere. The ten-a-month tier needs a counter
+        per email address, and a subscription needs somebody to belong to</li>
+        <li><b>Stripe</b> — every price on every page, and no way to take a card</li>
+        <li><b>tests.html</b> — the ten tests are a table pulled from a database.
+        The site's actual argument has no page</li>
+        <li><b>suspects.html</b> — the list of companies that failed, as its own page</li>
+        <li><b>The reading itself</b> — 8K10Q takes a ticker and has nothing behind it yet</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Built 1 September 2026. Print this page for a paper copy.</p>
+  </div>
+</footer>
+
+</body>
+</html>
