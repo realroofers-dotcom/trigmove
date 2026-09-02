@@ -1,0 +1,324 @@
+<!-- BUILT 2026-09-01 13:09 ET -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The books</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0C1220;--paper:#fff;--wash:#F4F5F8;--rule:#D5DAE4;--muted:#5A6478;
+  --hot:#FF4A00;--good:#0A7A3C;--bad:#8F1D24;--warn:#8A6A1C;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--wash);color:var(--ink);
+  font:400 15.5px/1.55 Rubik,system-ui,sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+h1,h2,h3{font-weight:900;letter-spacing:-.02em;line-height:1.12;margin:0}
+p{margin:0 0 1em}
+header{background:var(--ink);color:#fff;padding:24px 0 28px}
+header h1{font-size:26px}
+header .s{color:#B9C2D6;font-size:14.5px;margin-top:6px}
+section{padding:22px 0}
+
+.keyrow{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.keyrow input{flex:1;min-width:200px;font:14px var(--mono);padding:11px 13px;
+  border:1px solid var(--rule);border-radius:6px}
+button{font:600 14px Rubik;border:1px solid var(--rule);background:#fff;padding:10px 15px;
+  border-radius:6px;cursor:pointer}
+button:hover{border-color:var(--ink)}
+button.k{background:var(--ink);border-color:var(--ink);color:#fff}
+button.o{background:var(--hot);border-color:var(--hot);color:#180B05}
+button.sm{font-size:12.5px;padding:6px 11px}
+
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin:0 0 16px}
+.tabs button{font:600 13px Rubik}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+
+.big{display:grid;gap:2px;background:var(--rule);border:1px solid var(--rule);
+  border-radius:8px;overflow:hidden;margin:0 0 18px}
+@media(min-width:760px){.big{grid-template-columns:repeat(4,1fr)}}
+.big div{background:#fff;padding:16px 15px}
+.big .n{font:900 24px/1 var(--mono)}
+.big .n.pos{color:var(--good)} .big .n.neg{color:var(--bad)}
+.big .l{font:600 10px Rubik;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin-top:7px}
+
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--rule);
+  border-radius:8px;overflow:hidden;font-size:14px;margin:0 0 18px}
+th{text-align:left;background:var(--wash);padding:9px 11px;
+  font:900 10px Rubik;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+th.r,td.r{text-align:right}
+td{border-top:1px solid var(--rule);padding:10px 11px;vertical-align:top}
+td.m{font-family:var(--mono);font-size:13px;white-space:nowrap}
+tr:hover td{background:#FAFBFC}
+.tag{font:700 9.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  border-radius:3px;padding:2px 7px;white-space:nowrap}
+.t-wire{background:#FBF3E4;color:var(--warn)}
+.t-8k10q{background:#E9EDFB;color:#00208B}
+.t-shared{background:var(--wash);color:var(--muted)}
+.t-other{background:var(--wash);color:var(--muted)}
+.no{color:var(--bad);font-weight:700}
+.yes{color:var(--good)}
+
+.card{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:18px 20px;
+  margin:0 0 16px}
+.card h3{font-size:17px;margin-bottom:10px}
+.form{display:grid;gap:10px}
+@media(min-width:700px){.form{grid-template-columns:repeat(3,1fr)}}
+.form label{display:block;font-size:12.5px;color:var(--muted)}
+.form label span{display:block;margin-bottom:4px;font-weight:600;color:var(--ink)}
+.form input,.form select{width:100%;font:14px Rubik;padding:9px 11px;
+  border:1px solid var(--rule);border-radius:6px}
+.form .wide{grid-column:1/-1}
+
+.warn{background:#FFF8E8;border-left:4px solid var(--warn);padding:13px 15px;
+  font-size:14px;margin:0 0 16px}
+.warn b{display:block;margin-bottom:3px}
+.msg{font:13px var(--mono);color:var(--muted);padding:10px 0}
+.quiet{color:var(--muted);text-align:center;padding:26px;background:#fff;
+  border:1px solid var(--rule);border-radius:8px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>The books</h1>
+    <p class="s">What came in, what went out, and what nobody has confirmed with the
+    vendor yet.</p>
+  </div>
+</header>
+
+<div class="wrap">
+<section>
+  <div class="keyrow">
+    <input id="k" type="password" placeholder="LOG_KEY">
+    <button class="k" onclick="save()">Unlock</button>
+  </div>
+  <div id="out"><p class="msg">Enter the key.</p></div>
+</section>
+</div>
+
+<script>
+var API = "https://pay.realroofers.workers.dev";
+var KEY = localStorage.getItem("bookskey") || "";
+var TAB = "summary";
+var D = null;
+if (KEY) document.getElementById("k").value = KEY;
+
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function $(n){ return "$" + (Number(n)||0).toFixed(2); }
+function el(i){ return document.getElementById(i); }
+
+function save(){ KEY = el("k").value.trim(); localStorage.setItem("bookskey", KEY); load(); }
+function api(qs){ return fetch(API + qs, { headers:{ "X-Auth-Key": KEY }})
+  .then(function(r){ return r.json(); }); }
+
+function load(){
+  if (!KEY) return;
+  el("out").innerHTML = '<p class="msg">Loading…</p>';
+  Promise.all([ api("?action=books"), api("?action=journal") ])
+    .then(function(r){
+      if (!r[0].ok) throw new Error(r[0].error || "error");
+      D = { books: r[0], journal: r[1] };
+      draw();
+    })
+    .catch(function(e){ el("out").innerHTML = '<p class="msg">' + esc(String(e.message||e)) + '</p>'; });
+}
+
+function tab(t){ TAB = t; draw(); }
+
+function draw(){
+  var b = D.books, j = D.journal;
+  var pl = (b.profit_and_loss || [])[0] || {};
+
+  var h = '<div class="big">'
+    + '<div><p class="n pos">' + $(j.gross) + '</p><p class="l">Revenue, all time</p></div>'
+    + '<div><p class="n">' + $(j.card_fees) + '</p><p class="l">Card fees</p></div>'
+    + '<div><p class="n neg">' + $(pl.expenses) + '</p><p class="l">Expenses this month</p></div>'
+    + '<div><p class="n ' + ((pl.profit||0) >= 0 ? 'pos':'neg') + '">' + $(pl.profit)
+    +   '</p><p class="l">Profit this month</p></div>'
+    + '</div>';
+
+  if (b.unverified && b.unverified.length) {
+    h += '<div class="warn"><b>' + b.unverified.length + ' expense'
+      + (b.unverified.length===1?"":"s") + ' nobody has confirmed &mdash; '
+      + $(b.unverified_total) + '</b>'
+      + 'An invoice is not proof. It is settled when the vendor says so.</div>';
+  }
+
+  var tabs = [["summary","Summary"],["journal","Sales journal"],
+              ["expenses","Expenses"],["unverified","To confirm"],
+              ["vendors","Vendors"],["add","Write an expense"]];
+  h += '<div class="tabs">' + tabs.map(function(x){
+    return '<button class="' + (TAB===x[0]?"on":"") + '" onclick="tab(\'' + x[0] + '\')">'
+         + x[1] + (x[0]==="unverified" && b.unverified.length
+             ? ' (' + b.unverified.length + ')' : '') + '</button>';
+  }).join("") + '</div>';
+
+  if (TAB === "summary")    h += summary(b);
+  if (TAB === "journal")    h += journal(j);
+  if (TAB === "expenses")   h += expenses(b);
+  if (TAB === "unverified") h += unver(b);
+  if (TAB === "vendors")    h += vendors(b);
+  if (TAB === "add")        h += addForm();
+
+  el("out").innerHTML = h;
+}
+
+function summary(b){
+  var pl = b.profit_and_loss || [];
+  var sm = b.sales_by_month || [];
+  if (!pl.length && !sm.length) return '<div class="quiet">Nothing on the books yet.</div>';
+
+  var h = '<table><thead><tr><th>Month</th><th class="r">Revenue</th>'
+    + '<th class="r">Card fees</th><th class="r">Expenses</th><th class="r">Profit</th>'
+    + '</tr></thead><tbody>'
+    + pl.map(function(r){
+        return '<tr><td class="m">' + esc(r.month) + '</td>'
+          + '<td class="r m">' + $(r.revenue) + '</td>'
+          + '<td class="r m">' + $(r.card_fees) + '</td>'
+          + '<td class="r m">' + $(r.expenses) + '</td>'
+          + '<td class="r m ' + ((r.profit||0)>=0?'yes':'no') + '">' + $(r.profit) + '</td></tr>';
+      }).join("") + '</tbody></table>';
+
+  h += '<h3 style="margin:22px 0 10px">Sales by site</h3>'
+    + '<table><thead><tr><th>Month</th><th>Site</th><th class="r">Sales</th>'
+    + '<th class="r">Gross</th><th class="r">Net</th></tr></thead><tbody>'
+    + sm.map(function(r){
+        return '<tr><td class="m">' + esc(r.month) + '</td>'
+          + '<td><span class="tag t-' + esc(r.site) + '">' + esc(r.site) + '</span></td>'
+          + '<td class="r m">' + r.sales + '</td>'
+          + '<td class="r m">' + $(r.gross) + '</td>'
+          + '<td class="r m">' + $(r.net) + '</td></tr>';
+      }).join("") + '</tbody></table>';
+  return h;
+}
+
+function journal(j){
+  var rows = j.rows || [];
+  if (!rows.length) return '<div class="quiet">No sales yet.</div>';
+  return '<table><thead><tr><th>When</th><th>Site</th><th>What</th><th>Who</th>'
+    + '<th class="r">Gross</th><th class="r">Fee</th><th class="r">Net</th><th>Mode</th>'
+    + '</tr></thead><tbody>'
+    + rows.map(function(r){
+        return '<tr><td class="m">' + esc((r.at||"").slice(0,16)) + '</td>'
+          + '<td><span class="tag t-' + esc(r.site) + '">' + esc(r.site) + '</span></td>'
+          + '<td>' + esc(r.sku) + (r.ref ? ' <span class="m">' + esc(r.ref) + '</span>' : '') + '</td>'
+          + '<td class="m">' + esc(r.email || "") + '</td>'
+          + '<td class="r m">' + $(r.dollars) + '</td>'
+          + '<td class="r m">' + $(r.stripe_fee) + '</td>'
+          + '<td class="r m">' + $(r.net) + '</td>'
+          + '<td class="m">' + (r.live ? 'live' : '<span style="color:var(--warn)">test</span>')
+          + '</td></tr>';
+      }).join("") + '</tbody></table>';
+}
+
+function expenses(b){
+  var rows = b.expenses_by_month || [];
+  if (!rows.length) return '<div class="quiet">Nothing written down yet.</div>';
+  return '<table><thead><tr><th>Month</th><th>Site</th><th>Category</th>'
+    + '<th class="r">Items</th><th class="r">Spent</th><th class="r">Unconfirmed</th>'
+    + '</tr></thead><tbody>'
+    + rows.map(function(r){
+        return '<tr><td class="m">' + esc(r.month) + '</td>'
+          + '<td><span class="tag t-' + esc(r.site) + '">' + esc(r.site) + '</span></td>'
+          + '<td>' + esc(r.category) + '</td>'
+          + '<td class="r m">' + r.items + '</td>'
+          + '<td class="r m">' + $(r.dollars) + '</td>'
+          + '<td class="r m ' + (r.unverified > 0 ? 'no':'') + '">' + $(r.unverified) + '</td>'
+          + '</tr>';
+      }).join("") + '</tbody></table>';
+}
+
+function unver(b){
+  var rows = b.unverified || [];
+  if (!rows.length) return '<div class="quiet">Everything has been confirmed with the vendor.</div>';
+  return '<table><thead><tr><th>Spent</th><th>Vendor</th><th>What</th>'
+    + '<th class="r">Amount</th><th class="r">Days</th><th></th></tr></thead><tbody>'
+    + rows.map(function(r){
+        return '<tr><td class="m">' + esc(r.spent_on) + '</td>'
+          + '<td><b>' + esc(r.vendor) + '</b>'
+          + (r.invoice_no ? '<br><span class="m">' + esc(r.invoice_no) + '</span>' : '') + '</td>'
+          + '<td>' + esc(r.description || r.category) + '</td>'
+          + '<td class="r m">' + $(r.dollars) + '</td>'
+          + '<td class="r m ' + (r.days_old > 30 ? 'no':'') + '">' + r.days_old + '</td>'
+          + '<td class="r"><button class="sm o" onclick="confirmIt(' + r.id + ')">'
+          + 'Confirmed</button></td></tr>';
+      }).join("") + '</tbody></table>';
+}
+
+function vendors(b){
+  var rows = b.vendors || [];
+  if (!rows.length) return '<div class="quiet">No vendors yet.</div>';
+  return '<table><thead><tr><th>Vendor</th><th class="r">Items</th>'
+    + '<th class="r">Paid</th><th class="r">Confirmed</th><th>First</th><th>Last</th>'
+    + '</tr></thead><tbody>'
+    + rows.map(function(r){
+        var all = r.verified_items === r.items;
+        return '<tr><td><b>' + esc(r.vendor) + '</b></td>'
+          + '<td class="r m">' + r.items + '</td>'
+          + '<td class="r m">' + $(r.dollars) + '</td>'
+          + '<td class="r m ' + (all?'yes':'no') + '">' + r.verified_items + ' of ' + r.items + '</td>'
+          + '<td class="m">' + esc(r.first_paid) + '</td>'
+          + '<td class="m">' + esc(r.last_paid) + '</td></tr>';
+      }).join("") + '</tbody></table>';
+}
+
+function addForm(){
+  var cats = ["hosting","domains","data","ai","software","payments","legal","accounting",
+              "insurance","marketing","printing","contractor","payroll","travel","office",
+              "bank","tax","other"];
+  return '<div class="card"><h3>Write an expense</h3>'
+    + '<div class="form">'
+    + '<label><span>Vendor</span><input id="e_vendor" placeholder="Cloudflare"></label>'
+    + '<label><span>Amount</span><input id="e_amount" type="number" step="0.01" placeholder="5.00"></label>'
+    + '<label><span>Date</span><input id="e_on" type="date"></label>'
+    + '<label><span>Category</span><select id="e_cat">'
+    +   cats.map(function(c){ return '<option value="' + c + '">' + c + '</option>'; }).join("")
+    + '</select></label>'
+    + '<label><span>Which site</span><select id="e_site">'
+    +   ['shared','warrantwire','8k10q','triggeredshort','adhotbox','newsweed','jobcreation']
+    .map(function(c){ return '<option value="' + c + '">' + c + '</option>'; }).join("")
+    + '</select></label>'
+    + '<label><span>Invoice number</span><input id="e_inv" placeholder="optional"></label>'
+    + '<label class="wide"><span>What it was for</span>'
+    +   '<input id="e_what" placeholder="Workers Paid plan, September"></label>'
+    + '</div>'
+    + '<p style="margin:14px 0 0"><button class="o" onclick="addExpense()">Write it</button>'
+    + ' <span id="e_msg" class="msg"></span></p>'
+    + '<p style="margin:14px 0 0;font-size:13.5px;color:var(--muted)">It goes in '
+    + '<b>unconfirmed</b>. It stays there until somebody checks it against the vendor '
+    + '&mdash; not against the invoice.</p></div>';
+}
+
+function addExpense(){
+  var v = el("e_vendor").value.trim(), a = el("e_amount").value;
+  if (!v || !a) { el("e_msg").textContent = "Vendor and amount."; return; }
+  var p = new URLSearchParams({
+    action:"spend", vendor:v, amount:a,
+    category: el("e_cat").value, site: el("e_site").value,
+    what: el("e_what").value, invoice: el("e_inv").value
+  });
+  if (el("e_on").value) p.set("on", el("e_on").value);
+  el("e_msg").textContent = "Writing…";
+  api("?" + p.toString()).then(function(r){
+    el("e_msg").textContent = r.ok ? "Written." : (r.error || "failed");
+    if (r.ok) setTimeout(load, 500);
+  });
+}
+
+function confirmIt(id){
+  var how = prompt("How was it confirmed?", "called the vendor");
+  if (!how) return;
+  api("?action=verify&id=" + id + "&how=" + encodeURIComponent(how) + "&by=MN")
+    .then(load);
+}
+
+if (KEY) load();
+</script>
+</body>
+</html>
