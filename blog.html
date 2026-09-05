@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- BLOG INDEX 1a — 2026-09-05
+     Lists the written work. To add a piece, copy one <article class="post">
+     block and fill it in, newest at the top. The first block is set as the
+     lead; move the class="lead" to whichever piece should be. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Writing — Triggered Short™</title>
+<meta name="description" content="Pieces on dilution, warrant financings and the companies filing them. Every figure carries instructions for reproducing it.">
+<meta name="author" content="Mark Nejmeh">
+<link rel="canonical" href="https://triggeredshort.com/blog.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Writing — Triggered Short™">
+<meta property="og:description" content="Pieces on dilution, warrant financings and the companies filing them.">
+<meta property="og:url" content="https://triggeredshort.com/blog.html">
+<meta property="og:image" content="https://triggeredshort.com/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;650&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* the list of pieces — built on the docket palette, nothing new introduced */
+.posts{border-top:1px solid var(--ink);margin-top:20px}
+.post{display:grid;grid-template-columns:118px 1fr 300px;gap:0 24px;
+  border-bottom:1px solid var(--rule-2);padding:22px 0;align-items:start}
+.post:hover{background:rgba(28,93,69,.04)}
+.p-date{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink-2);
+  padding-top:4px;line-height:1.7}
+.p-date b{display:block;color:var(--certified);font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;font-size:10.5px;margin-bottom:3px}
+.p-title{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.25;
+  margin:0 0 6px;letter-spacing:-.012em}
+.p-title a{color:var(--ink);text-decoration:none}
+.p-title a:hover{text-decoration:underline;text-underline-offset:3px}
+.p-stand{font-size:14.5px;color:var(--ink-2);margin:0 0 9px;max-width:60ch}
+.p-by{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink-2);
+  text-transform:uppercase}
+.p-by .guest{color:var(--stamp);font-weight:600}
+.p-tags{margin:9px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.p-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-2);
+  border:1px solid var(--rule);background:var(--card);padding:2px 7px}
+.p-thumb{background:var(--card);border:1px solid var(--rule)}
+.p-thumb img{display:block;width:100%;height:auto}
+
+/* lead piece — the one at the top gets the room */
+.post.lead{grid-template-columns:1fr 1fr;gap:0 28px;padding:26px 0 30px;
+  border-bottom:2px solid var(--ink)}
+.post.lead .p-date{grid-column:1;padding-top:0;margin-bottom:8px}
+.post.lead .p-title{font-size:clamp(24px,3.6vw,32px);line-height:1.16}
+.post.lead .p-stand{font-size:16px}
+.post.lead .p-thumb{grid-row:1 / span 3;grid-column:2}
+
+/* write for us */
+.writein{background:var(--ink);color:var(--ledger);padding:22px 24px;margin-top:34px}
+.writein h3{font-family:var(--display);color:var(--ledger);font-size:19px;margin:0 0 8px}
+.writein p{color:#BFC5C0;font-size:14px;max-width:70ch;margin:0 0 10px}
+.writein ul{color:#BFC5C0;font-size:13.5px;margin:0 0 14px;padding-left:20px;max-width:70ch}
+.writein li{margin-bottom:6px}
+.writein a.btn{display:inline-block;background:var(--certified);color:var(--ledger);
+  font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.05em;
+  padding:11px 18px;text-decoration:none}
+.writein a.btn:hover{background:#26805f}
+
+.adslot{background:var(--card);border:1px solid var(--rule);min-height:120px;margin:30px 0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-2)}
+
+@media(max-width:860px){
+  .post{grid-template-columns:1fr}
+  .post .p-thumb{grid-row:auto;grid-column:auto;margin-top:14px;max-width:420px}
+  .post .p-date{padding-top:0;margin-bottom:8px}
+  .post.lead{grid-template-columns:1fr}
+  .post.lead .p-thumb{grid-row:auto;grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="mast-inner">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="TriggeredShort.com" width="1223" height="297">
+    </a>
+    <div class="mast-meta">
+      Research docket<br>
+      Mark Nejmeh<br>
+      <b>Foundation for Job Creation</b><br>
+      SEC EDGAR filer · LTID <b>71743954</b>
+    </div>
+  </div>
+</header>
+
+<nav class="docket-nav">
+  <div class="nav-inner">
+    <a href="index.html">What it is</a>
+    <a href="tests.html">The ten tests</a>
+    <a href="suspects.html">Suspects</a>
+    <a href="example.html">Worked example</a>
+    <a href="method.html">Method</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="blog.html" aria-current="page">Writing</a>
+    <span class="navgap"></span>
+    <a class="door" href="https://warrantwire.com">Warrant Wire &rarr;</a>
+    <a class="door k8" href="https://8k10q.com">8K10Q &rarr;</a>
+  </div>
+</nav>
+
+<main>
+
+<section>
+  <p class="eyebrow">Writing</p>
+  <h2>[SECTION TITLE — what this collection is]</h2>
+  <p class="lede">[ONE OR TWO SENTENCES. What a reader finds here and what rule it is written
+  under — every figure carries instructions for reproducing it, positions are declared, and
+  every company named can answer.]</p>
+
+  <div class="posts">
+
+    <!-- ===== ONE PIECE. Copy this block for each new one, newest first. =====
+         Drop class="lead" from this one and put it on the new top piece.
+         Delete .p-thumb if there is no picture. Delete .p-tags if there are no tags. -->
+    <article class="post lead">
+      <p class="p-date"><b>[Section]</b>[Month DD, YYYY]</p>
+      <div>
+        <h3 class="p-title"><a href="[piece.html]">[HEADLINE]</a></h3>
+        <p class="p-stand">[The standfirst from the piece — what a reader gets if they read
+        nothing else.]</p>
+        <p class="p-by">By [AUTHOR NAME]<span class="guest"> [ · Contributing writer — delete
+        if house]</span> · [N] min</p>
+        <div class="p-tags"><span>[tag]</span><span>[tag]</span><span>[tag]</span></div>
+      </div>
+      <div class="p-thumb">
+        <img src="[images/filename.jpg]" alt="[what the picture shows]"
+             width="800" height="450" loading="lazy" decoding="async">
+      </div>
+    </article>
+
+    <article class="post">
+      <p class="p-date"><b>[Section]</b>[Month DD, YYYY]</p>
+      <div>
+        <h3 class="p-title"><a href="[piece.html]">[HEADLINE]</a></h3>
+        <p class="p-stand">[Standfirst.]</p>
+        <p class="p-by">By [AUTHOR NAME] · [N] min</p>
+        <div class="p-tags"><span>[tag]</span><span>[tag]</span></div>
+      </div>
+      <div class="p-thumb">
+        <img src="[images/filename.jpg]" alt="[what the picture shows]"
+             width="800" height="450" loading="lazy" decoding="async">
+      </div>
+    </article>
+
+    <article class="post">
+      <p class="p-date"><b>[Section]</b>[Month DD, YYYY]</p>
+      <div>
+        <h3 class="p-title"><a href="[piece.html]">[HEADLINE]</a></h3>
+        <p class="p-stand">[Standfirst.]</p>
+        <p class="p-by">By [AUTHOR NAME] · [N] min</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="adslot" data-ad="blog-list">Advertisement</div>
+
+<hr class="rule">
+
+<section>
+  <p class="eyebrow">Contribute</p>
+  <div class="writein">
+    <h3>[HEADING — your invitation to write here]</h3>
+    <p>[WHO YOU WANT. Two or three sentences in your words.]</p>
+    <p>What every piece on this site carries, house or guest:</p>
+    <ul>
+      <li>A name. Nobody writes here anonymously.</li>
+      <li>A disclosure — what the writer holds, who pays them, and any connection to the
+        companies named. If none, it says none.</li>
+      <li>Sources, listed, with the accession number of every filing relied on.</li>
+      <li>A right of reply. Anyone named can answer, and the answer publishes in full and
+        unedited.</li>
+      <li>Corrections that stay on the page. Nothing is quietly changed.</li>
+    </ul>
+    <a class="btn" href="mailto:realroofers@gmail.com?subject=Writing%20for%20Triggered%20Short">
+      Write to the editor &rarr;</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <b>Mark Nejmeh</b><br>
+    <a href="https://jobcreation.us" style="color:var(--ink-2)">Foundation for Job Creation</a><br>
+    P.O. Box 589, Clifton, New Jersey 07012<br>
+    732-995-3914 · realroofers@gmail.com<br><br>
+    SEC EDGAR filer information — CIK 0001860507 · SEC File No. 150-11431 · LTID 71743954 ·
+    Form 13H accepted May 4, 2021
+    <p class="disclaimer">EDGAR filer information is provided solely to identify the author as a
+    registered filer and prior Form 13H registrant. It is not an endorsement, approval, or finding
+    by the Securities and Exchange Commission regarding this site or its contents. Nothing on this
+    site is investment advice or a recommendation to buy or sell any security.</p>
+  </div>
+</footer>
+
+<script src="https://adhotbox.com/box.js" data-auto
+        data-not=".posts, .writein, .masthead, .docket-nav, footer"></script>
+</body>
+</html>
