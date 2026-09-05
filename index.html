@@ -55,6 +55,34 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="styles.css">
 <style>
+/* the four doors — built on the docket palette, nothing new introduced */
+.doors{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.dr{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--rule);
+  border-left:5px solid var(--certified);padding:18px 20px 16px;text-decoration:none;
+  color:var(--ink)}
+.dr:hover{border-color:var(--ink);border-left-color:var(--certified)}
+.dr-k{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.13em;
+  color:var(--certified);font-weight:600;margin-bottom:7px}
+.dr b{font-family:var(--display);font-weight:600;font-size:20px;line-height:1.22;
+  margin:0 0 7px;letter-spacing:-.01em}
+.dr-d{font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:14px;max-width:44ch}
+.dr-go{margin-top:auto;font-family:var(--mono);font-size:12.5px;font-weight:600;
+  letter-spacing:.04em;color:var(--ledger);background:var(--certified);
+  padding:11px 14px;display:flex;justify-content:space-between;align-items:center}
+.dr-go i{font-style:normal}
+.dr:hover .dr-go{background:var(--ink)}
+.dr.k8{border-left-color:#00208B}
+.dr.k8 .dr-k{color:#00208B}
+.dr.k8 .dr-go{background:#00208B}
+.dr.army{border-left-color:var(--stamp)}
+.dr.army .dr-k{color:var(--stamp)}
+.dr.army .dr-go{background:var(--stamp)}
+.dr.tests{border-left-color:var(--ink-2)}
+.dr.tests .dr-k{color:var(--ink-2)}
+.dr.tests .dr-go{background:var(--ink)}
+@media(max-width:760px){.doors{grid-template-columns:1fr}}
+</style>
+<style>
 /* ---- front-page additions. Everything else comes from styles.css ---- */
 .hero{padding:34px 0 26px;border-bottom:1px solid var(--rule-2)}
 .hero h1{font-family:var(--serif,Bitter,Georgia,serif);font-size:clamp(26px,3.4vw,38px);
@@ -170,6 +198,7 @@ a.door.k8:hover{background:#00208B;color:#fff!important}
     <a href="example.html">Worked example</a>
     <a href="method.html">Method</a>
     <a href="glossary.html">Glossary</a>
+    <a href="blog.html">Writing</a>
     <span class="navgap"></span>
     <a class="door" href="https://warrantwire.com">Warrant Wire &rarr;</a>
     <a class="door k8" href="https://8k10q.com">8K10Q &rarr;</a>
@@ -207,6 +236,50 @@ a.door.k8:hover{background:#00208B;color:#fff!important}
   <div data-wire="5" data-days="14" data-title="Filed in the last 14 days"
        data-link="warrants.html"></div>
 </section>
+
+<!-- ============================================================
+     1c · THE FOUR DOORS — where a reader goes from here
+     ============================================================ -->
+<section class="doors-sec">
+  <p class="eyebrow">Where to go from here</p>
+  <h2>Four ways to use this</h2>
+  <div class="doors">
+
+    <a class="dr" href="https://warrantwire.com">
+      <span class="dr-k">Warrant Wire</span>
+      <b>Search a company, back five years</b>
+      <span class="dr-d">Every filing that carries the language of a warrant financing, with the
+        exhibits, listed. The machine, not an opinion.</span>
+      <span class="dr-go">$8 a search &middot; $60 the year <i>&rarr;</i></span>
+    </a>
+
+    <a class="dr k8" href="https://8k10q.com">
+      <span class="dr-k">8K10Q</span>
+      <b>Have one filing read for you</b>
+      <span class="dr-d">Somebody reads the filing and the exhibit and tells you in plain English
+        what the terms actually are, with the sections that matter marked.</span>
+      <span class="dr-go">$20 a filing <i>&rarr;</i></span>
+    </a>
+
+    <a class="dr army" href="army.html">
+      <span class="dr-k">The 8K10Q Army</span>
+      <b>Read, vote, and show up</b>
+      <span class="dr-d">Shareholders who read the filing, vote the proxy and attend the meeting.
+        No rank, no application, no anonymity. There are rules.</span>
+      <span class="dr-go">Free to join <i>&rarr;</i></span>
+    </a>
+
+    <a class="dr tests" href="tests.html">
+      <span class="dr-k">The ten tests</span>
+      <b>The standard, before anyone is measured by it</b>
+      <span class="dr-d">Ten questions asked the same way of every company, each answer pointing
+        at the document it came from.</span>
+      <span class="dr-go">Read the standard <i>&rarr;</i></span>
+    </a>
+
+  </div>
+</section>
+
 <hr class="rule">
 <!-- ============================================================
      2 · THE SIX TESTS — the standard, before anyone is measured by it
