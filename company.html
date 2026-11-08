@@ -1,303 +1,267 @@
+<!-- BUILT 2026-09-21 · 8k10q company-1d (1d: the state and the agent for service on the summary, a flag when none; 1c: filings in the past year and five, every recent filing listed, JOIN CHAT by the search; 1b: the red-flag strip, free, only when there are flags; the split and merger lists are the goods) · THE COMPANY PAGE on 8K10Q: the three tell-tales at the top (name change, reverse split, warrant paper), then everything the company has filed, each readable here for $12. -->
+<!--
+   HIS RULE, 20 Sep 2026: "these warnings also go on 8K10Q." The same wire
+   answers both sites; this page reads it and puts the STOP banner (a name
+   change, high risk, no exception — with the old tickers, always shown and
+   searchable), the reverse split box and the merger box at the top, in
+   8K10Q's dress. Then the EDGAR record: every form, the latest filings, a
+   $12 read on each (was $20 until 8 Nov 2026). Warrant Wire reads the warrant paper; 8K10Q reads the
+   whole filing.
+   The wire at wire.warrantwire.com answers ?wire=1&q=TICKER — an old ticker
+   resolves to the company that carries it today (searched_as).
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Company detail — Triggered Short™</title>
-<meta name="description" content="Six questions answered from a company's own filings, with the document behind each answer and what happened to the share count afterward.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;650&display=swap" rel="stylesheet">
-<meta name="author" content="Mark Nejmeh">
+<title>The company — 8K10Q</title>
+<meta name="description" content="Everything a company has filed with the SEC since 2001, with the three tell-tales flagged first: a name change, a reverse split, warrant paper. Read any filing in plain English for $12.">
+<link rel="canonical" href="https://8k10q.com/company.html">
 <meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="8K10Q">
+<meta property="og:title" content="The company — 8K10Q">
+<meta property="og:description" content="Everything a company has filed with the SEC since 2001, with the three tell-tales flagged first: a name change, a reverse split, warrant paper. Read any filing in plain English for $12.">
+<meta property="og:url" content="https://8k10q.com/company.html">
+<meta property="og:image" content="https://8k10q.com/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The company — 8K10Q">
+<meta name="twitter:description" content="Everything a company has filed with the SEC since 2001, with the three tell-tales flagged first: a name change, a reverse split, warrant paper. Read any filing in plain English for $12.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-.co-head{padding:26px 0 20px;border-bottom:1px solid var(--rule-2,#DCE2E8)}
-.co-head h1{font-family:var(--serif,Bitter,Georgia,serif);font-size:clamp(24px,3vw,34px);
-  margin:0 0 6px;letter-spacing:-.01em}
-.co-head .tk{font-family:var(--mono,"IBM Plex Mono",monospace);letter-spacing:.06em}
-.co-head .meta{font-size:14px;color:var(--ink-2,#5A6472);margin:0}
-.verdict{display:inline-block;margin:12px 0 0;font-family:var(--mono,"IBM Plex Mono",monospace);
-  font-size:13px;letter-spacing:.07em;text-transform:uppercase;padding:6px 12px;border-radius:3px;border:1px solid}
-.verdict.fail{background:#FBEAEC;color:#B3202C;border-color:#F0C9CD}
-.verdict.clear{background:#E9F5F0;color:#1B7F79;border-color:#BFE0D6}
-
-.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:20px 0 4px}
-.fig{border:1px solid var(--rule-2,#DCE2E8);border-radius:5px;padding:13px 15px;background:#fff}
-.fig .k{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2,#5A6472);margin:0 0 5px}
-.fig .v{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:21px;font-weight:600;margin:0;line-height:1.15}
-.fig .n{font-size:12px;color:var(--ink-2,#5A6472);margin:5px 0 0}
-.neg{color:#B3202C}.pos{color:#1B7F79}
-
-.q{border:1px solid var(--rule-2,#DCE2E8);border-left-width:5px;border-radius:5px;
-  padding:15px 17px;margin-bottom:12px;background:#fff}
-.q.fail{border-left-color:#B3202C}
-.q.pass{border-left-color:#1B7F79}
-.q.na{border-left-color:#A9B3BF}
-.q.unk{border-left-color:#8A6A12}
-.q .no{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;color:var(--ink-2,#5A6472)}
-.q h3{margin:2px 0 6px;font-size:17px}
-.q .ans{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;letter-spacing:.06em;
-  text-transform:uppercase;padding:3px 8px;border-radius:3px;border:1px solid;float:right}
-.q .ans.fail{background:#FBEAEC;color:#B3202C;border-color:#F0C9CD}
-.q .ans.pass{background:#E9F5F0;color:#1B7F79;border-color:#BFE0D6}
-.q .ans.na{background:#F4F6F8;color:#4A5563;border-color:#C6CDD6}
-.q .ans.unk{background:#FDF6E3;color:#8A6A12;border-color:#E3C77A}
-.q .src{font-size:12.5px;color:var(--ink-2,#5A6472);margin:8px 0 0}
-.ev{border-top:1px solid var(--rule-2,#DCE2E8);margin-top:11px;padding-top:11px}
-.ev p{margin:0 0 6px;font-size:14px}
-.ev blockquote{margin:6px 0;padding:6px 0 6px 12px;border-left:3px solid var(--rule-2,#DCE2E8);
-  font-style:italic;font-size:14px}
-.ev a{font-size:13px}
-.busy{color:var(--ink-2,#5A6472);font-size:14px}
-.back{font-size:13.5px}
-</style>
-<style>
-.motto{font-family:var(--serif,Bitter,Georgia,serif);font-style:italic;font-size:14.5px;
-  color:var(--ink-2,#5A6472);margin:6px 0 0;letter-spacing:.01em;line-height:1.3}
-@media (max-width:640px){.motto{font-size:13px}}
+:root{--navy:#00208B;--navy-d:#001348;--hot:#FF4A00;--paper:#F4F3EE;--card:#fff;--ink:#12141C;--ink-2:#5A6072;--line:#d8d6cd;--stop:#B3261E;
+  --disp:Rubik,system-ui,sans-serif;--body:"Public Sans",system-ui,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--body)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+header{background:var(--navy);color:#fff;padding:22px 0}
+header .mast{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+header .logo{font:900 26px var(--disp);letter-spacing:-.02em;color:#fff;text-decoration:none}
+header .logo i{font-style:normal;color:var(--hot)}
+header nav a{color:#C7D0F0;text-decoration:none;font:600 14px var(--body);margin-left:18px}
+header nav a[aria-current]{color:#fff}
+.search{display:flex;gap:8px;margin:22px 0 0}
+.search input{flex:1 1 200px;font:600 18px var(--disp);padding:12px 14px;border:2px solid var(--navy);border-radius:8px;text-transform:uppercase}
+.search button{font:700 16px var(--body);background:var(--hot);color:#fff;border:0;border-radius:8px;padding:12px 20px;cursor:pointer}
+.who{padding:22px 0 8px}
+.who h1{font:900 clamp(26px,4vw,40px)/1.1 var(--disp);letter-spacing:-.02em;margin:0 0 6px}
+.who h1 small{font:600 16px var(--mono);color:var(--ink-2);letter-spacing:.04em;margin-left:10px}
+.who p{margin:0 0 4px;color:var(--ink-2);font-size:15px}
+.who p b{color:var(--ink)}
+.stop{border:3px solid var(--stop);background:var(--stop);color:#fff;border-radius:12px;padding:16px 20px;margin:16px 0 0}
+.stop .k{display:block;font:800 12px var(--mono);letter-spacing:.18em;text-transform:uppercase;margin:0 0 8px}
+.stop p{margin:0 0 8px;color:#fff}.stop b{color:#fff}.stop a{color:#fff}
+.stop ol{margin:6px 0 10px;padding:0 0 0 20px;font-size:15px}
+.stop .go{display:inline-block;background:#fff;color:var(--stop);font:700 15px var(--body);padding:10px 18px;border-radius:8px;text-decoration:none;border:0;cursor:pointer}
+.warn{border:2px solid var(--hot);border-radius:12px;padding:14px 18px;margin:14px 0 0;background:#fff3ec}
+.warn .k{display:block;font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#b53400;margin:0 0 8px}
+.warn p{margin:0 0 8px;font-size:15.5px}
+.warn ol{margin:0;padding:0;list-style:none;font-size:14px}
+.warn li{display:flex;flex-wrap:wrap;gap:6px 14px;padding:6px 0;border-top:1px solid #f2c9b4}
+.warn .ef{font:600 12px var(--mono);min-width:64px}.warn .ed{font:12px var(--mono);color:var(--ink-2);min-width:90px}
+.warn .fine,.fine{font-size:13px;color:var(--ink-2)}
+.edgar{margin:22px 0 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.edgar h2{font:800 22px var(--disp);margin:0 0 6px}
+.eforms{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.eforms span{font:12.5px var(--mono);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.eforms b{color:var(--navy)}
+.elist{list-style:none;margin:10px 0 0;padding:0}
+.elist li{display:grid;grid-template-columns:90px 110px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
+@media(max-width:640px){.elist li{grid-template-columns:1fr 1fr;}}
+.elist .ef{font:600 13px var(--mono)}.elist .ed{font:13px var(--mono);color:var(--ink-2)}
+.elist a{color:var(--navy)}
+.buy{font:700 14px var(--body);background:var(--navy);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.buy:hover{background:var(--navy-d)}
+.quiet{padding:30px 0;color:var(--ink-2)}
+#buymsg{font-size:14px;color:var(--navy);min-height:1.4em}#buymsg.bad{color:var(--stop)}
+footer{padding:30px 0 50px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line);margin-top:30px}
 </style>
 <script src="/pulse.js" data-mode="dot" data-colour="#2678d6" defer></script>
 </head>
 <body>
+<header><div class="wrap mast">
+  <a class="logo" href="/">8K<i>10Q</i></a>
+  <nav><a href="/">Read a filing</a><a href="/company.html" aria-current="page">A company</a><a href="https://warrantwire.com/agents.html">Agents for service</a><a href="https://warrantwire.com/states.html">The states</a><a href="/market.html">The market</a><a href="https://warrantwire.com">Warrant Wire</a></nav>
+</div></header>
 
-<header class="masthead">
-  <div class="mast-inner">
-    <a class="brand" href="index.html">
-      <img src="logo.png" alt="TriggeredShort.com" width="1223" height="297">
-    </a>
-    <p class="motto">&ldquo;It&rsquo;s never as it seems.&rdquo; &mdash; Mark Nejmeh</p>
-    <div class="mast-meta">
-      Research docket<br>
-      Mark Nejmeh<br>
-      <b>Foundation for Job Creation</b><br>
-      SEC EDGAR filer · LTID <b>71743954</b>
-    </div>
-  </div>
-</header>
+<main><div class="wrap">
+  <form class="search" id="sf"><input id="tk" placeholder="Ticker — old ones work too" autocomplete="off"><button type="submit">Look it up</button><a id="joinchat" href="#tk" onclick="var v=document.getElementById('tk').value.trim().toUpperCase();if(!/room\.html/.test(this.href)){event.preventDefault();if(v)location.href='/room.html?t='+encodeURIComponent(v);else document.getElementById('tk').focus();}" style="background:#fff;color:var(--hot);border:2px solid var(--hot);border-radius:8px;padding:12px 18px;font:700 16px var(--body);text-decoration:none;white-space:nowrap">JOIN CHAT</a></form>
+  <p class="fine" style="margin:6px 0 0">Every company has a room. Everyone registers &mdash; a name, a telephone &mdash; and nobody is anonymous.</p>
+  <div id="page"><div class="quiet">Type a ticker above. An old ticker still finds the company &mdash; WGRX finds MEDS.</div></div>
+  <p id="buymsg"></p>
+</div></main>
 
-<nav class="docket-nav">
-  <div class="nav-inner">
-    <a href="index.html">Docket</a>
-    <a href="chronology.html">Chronology</a>
-    <a href="data.html">Market data</a>
-    <a href="model.html">Calculator</a>
-    <a href="example.html">Example</a>
-    <a href="forms.html">SEC codes</a>
-    <a href="records.html">Records</a>
-    <a href="exhibits.html">Exhibits</a>
-    <a href="reports.html">Reports</a>
-    <a href="method.html">Method</a>
-  </div>
-</nav>
-
-<main>
-  <p class="back"><a href="index.html">&larr; All companies</a></p>
-  <div id="page"><p class="busy">Loading…</p></div>
-</main>
-
-<footer>
-  <div class="foot-inner">
-    <b>Mark Nejmeh</b><br>
-    <a href="https://jobcreation.us" style="color:var(--ink-2)">Foundation for Job Creation</a><br>
-    P.O. Box 589, Clifton, New Jersey 07012<br>
-    732-995-3914 · realroofers@gmail.com<br><br>
-    SEC EDGAR filer information — CIK 0001860507 · SEC File No. 150-11431 · LTID 71743954 · Form 13H accepted May 4, 2021
-    <p class="disclaimer">Nothing on this site is investment advice or a recommendation to buy or sell any security. Every answer below is taken from a document the company filed with the Securities and Exchange Commission. No statement here alleges that any person or firm has broken any law.</p>
-  </div>
-</footer>
+<footer><div class="wrap">
+  Warrant Wire reads the warrant paper; 8K10Q reads the whole filing, every section, in plain English. The three tell-tales &mdash; a name change, a reverse split, warrant paper &mdash; are flagged on both, from the SEC&rsquo;s own record. Nothing here is investment advice. <a href="https://warrantwire.com/rules.html">The rules &rarr;</a><br>
+  <span style="font:11px var(--mono)">Built 2026-09-20 &middot; 8k10q company-1d &middot; rules version 4</span>
+</div></footer>
 
 <script>
-(function(){try{
-  fetch('/api/hit',{method:'POST',headers:{'content-type':'application/json'},
-    body:JSON.stringify({path:location.pathname+location.search,ref:document.referrer||''}),
-    keepalive:true}).catch(function(){});
-}catch(e){}})();
-</script>
+(function () {
+  "use strict";
+  var WIRE = "https://wire.warrantwire.com", PAY = "https://pay.realroofers.workers.dev";
+  var SELLING = false; /* no checkout until reads are delivered — see the buttons below */
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]; }); }
+  var qs = new URLSearchParams(location.search), T = (qs.get("ticker") || qs.get("t") || qs.get("q") || "").trim().toUpperCase();
+  var page = document.getElementById("page");
+  document.getElementById("sf").addEventListener("submit", function (e) { e.preventDefault(); var v = document.getElementById("tk").value.trim().toUpperCase(); if (v) location.href = "/company.html?ticker=" + encodeURIComponent(v); });
+  if (!T) return;
+  document.getElementById("tk").value = T;
+  document.getElementById("joinchat").href = "/room.html?t=" + encodeURIComponent(T);
+  document.title = T + " — 8K10Q";
+  page.innerHTML = '<div class="quiet">Reading the record for ' + esc(T) + '…</div>';
 
-<script>
-(function(){
-  var APP = 'https://8kzip.com';
-
-  var esc = function(s){ return String(s==null?'':s).replace(/[&<>"']/g,
-    function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
-
-  var num = function(v){
-    if (v === null || v === undefined || v === '') return '&mdash;';
-    return Number(v).toLocaleString('en-US');
-  };
-
-  var money = function(v){
-    if (v === null || v === undefined || v === '') return '&mdash;';
-    return '$' + Number(v).toFixed(Number(v) < 10 ? 4 : 2);
-  };
-
-  var pct = function(v){
-    if (v === null || v === undefined || v === '') return '&mdash;';
-    var n = Number(v);
-    return '<span class="' + (n < 0 ? 'neg' : 'pos') + '">' +
-           (n > 0 ? '+' : '') + n.toFixed(1) + '%</span>';
-  };
-
-  var instrument = function(m){
-    return ({
-      warrant_inducement:'Warrant inducement',
-      warrant_issuance:'Warrants issued with a raise',
-      convertible:'Convertible note',
-      discounted_placement:'Discounted share placement',
-      pipe:'PIPE',
-      atm:'At-the-market programme',
-      customer_warrant:'Customer warrant'
-    })[m] || (m || '');
-  };
-
-  /* map a stored answer to how it should read and colour.
-     The tests are worded so that "yes" is the failing answer on 1,2,4,5
-     and "no" is the failing answer on 3. Test 6 records, it never fails. */
-  var FAIL_ON_YES = { 1:true, 2:true, 5:true, 6:true, 7:true, 8:true, 9:true };
-  function verdictOf(n, v){
-    v = (v || 'unknown').toLowerCase();
-    if (v === 'n/a' || v === 'na')  return { cls:'na',   word:'Not applicable' };
-    if (v === 'unknown')            return { cls:'unk',  word:'Not established' };
-    if (v === 'recorded')           return { cls:'na',   word:'Recorded' };
-    if (v === 'concern')            return { cls:'fail', word:'Concern' };
-    if (n === 3 || n === 10)        return { cls:'na',   word:'Recorded' };
-    var failed = FAIL_ON_YES[n] ? (v === 'yes') : (v === 'no');
-    return failed ? { cls:'fail', word:'Fails' } : { cls:'pass', word:'Clear' };
+  /* the red flags — free, and only when there are any. The count and the kind;
+     the filings are the goods, and the goods are read here for $12 or in the
+     verdict at Warrant Wire for $12. */
+  function flagsBox(d, tk) {
+    var s = d.signals || {}, a = d.about || {}, f = [];
+    var renamed = s.renamed && s.renamed.former ? s.renamed.former.length : 0, splits = (s.splits || []).length, merger = (s.merger || []).length, warrants = Number(a.filings || 0);
+    if (renamed) f.push("Name change" + (renamed > 1 ? " &times;" + renamed : "") + " &mdash; high risk");
+    if (splits) f.push("Reverse split &mdash; " + splits + " filing" + (splits === 1 ? "" : "s") + " &mdash; high risk");
+    if (warrants) f.push("Warrant paper &mdash; " + warrants + " filing" + (warrants === 1 ? "" : "s"));
+    if (merger) f.push("Merger, sale or wind-down on the table");
+    if (!(d.company && d.company.agent)) f.push("No agent for service disclosed &mdash; high risk");
+    if (!f.length) return "";
+    return '<div class="warn" style="background:#fff"><span class="k">Red flags &mdash; the warning is free</span>'
+      + '<p><b style="font:800 26px/1 var(--disp);color:var(--hot);margin-right:8px">' + f.length + '</b> <b>' + (f.length === 1 ? 'tell-tale' : 'tell-tales') + ' on ' + esc((d.company && d.company.name) || tk) + '.</b> Which filings, which dates and what they say are the goods: read a filing below for $12, or <a href="https://warrantwire.com/company.html?t=' + esc(tk) + '">the warrant verdict at Warrant Wire, $12</a>.</p>'
+      + '<p style="display:flex;flex-wrap:wrap;gap:6px">' + f.map(function (x) { return '<span style="font:600 13px var(--body);border-radius:999px;padding:4px 11px;background:#fff3ec;color:#b53400;border:1px solid #f2c9b4">' + x + '</span>'; }).join("") + '</p></div>';
   }
-
-  var q = new URLSearchParams(location.search).get('ticker') || '';
-  var t = q.toUpperCase().replace(/[^A-Z.\-]/g,'').slice(0,8);
-  var page = document.getElementById('page');
-
-  if (!t) {
-    page.innerHTML = '<p class="busy">No ticker given. <a href="index.html">Back to the list</a>.</p>';
-    return;
+  /* the path of the shell — every name and ticker, oldest first, each one searchable */
+  function pathHtml(d, base) {
+    var p = d.path; if (!p || !p.steps || p.steps.length < 2) return "";
+    var tk = {}; (p.tickers || []).forEach(function (t) { if (t.name) tk[t.name] = t.ticker; });
+    var cur = (p.tickers || []).filter(function (t) { return t.current; })[0];
+    return '<p style="margin-top:10px"><b>The path:</b> ' + p.steps.map(function (s, i) {
+      var q = s.current ? (cur ? cur.ticker : s.name) : (tk[s.name] || s.name);
+      return '<a href="' + base + encodeURIComponent(q) + '" style="font-weight:700">' + esc(s.name) + (tk[s.name] ? ' / ' + esc(tk[s.name]) : (s.current && cur ? ' / ' + esc(cur.ticker) : '')) + '</a> <span style="opacity:.85">(' + esc(s.from || '?') + ' &rarr; ' + (s.current ? 'today' : esc(s.to || '?')) + ')</span>';
+    }).join(' &rarr; ') + '. ' + esc(p.note || '') + '</p>';
+  }  function stopBox(d, tk) {
+    var r = d.signals && d.signals.renamed; if (!r || !r.former || !r.former.length) return "";
+    var first = d.edgar && d.edgar.first ? String(d.edgar.first).slice(0, 10) : null;
+    var years = first ? (Date.now() - Date.parse(first)) / 31557600000 : null, young = years != null && years < 3;
+    var ft = (d.company && d.company.former_tickers) || [];
+    return '<div class="stop"><span class="k">&#9632; Stop &mdash; this company changed its name</span>'
+      + (d.searched_as ? '<p><b>You searched ' + esc(d.searched_as.ticker) + '.</b> ' + esc(d.searched_as.note || ("That is a former name; the company trades as " + d.searched_as.now + " today.")) + '</p>' : '')
+      + '<p><b>' + esc(r.now || tk) + ' has filed with the SEC under ' + (r.former.length === 1 ? 'another name' : r.former.length + ' other names') + (ft.length ? ' and traded as ' + ft.map(function (x) { return esc(x.ticker); }).join(", ") : '') + '.</b>'
+      + (young ? ' It has been on EDGAR only since ' + esc(first) + ' &mdash; public about ' + (years < 1 ? 'a year' : Math.round(years) + ' years') + ' &mdash; and has already changed its name.' : (first ? ' On EDGAR since ' + esc(first) + '.' : ''))
+      + ' A name change is high risk, without exception: the filings, the warrant paper and the shareholders who held it stay on EDGAR under the old name, and the new name starts clean.</p>'
+      + '<ol>' + r.former.map(function (f) { return '<li><b>' + esc(f.name) + '</b>' + (f.from || f.to ? ' &mdash; ' + esc(f.from || '?') + ' to ' + esc(f.to || '?') : '') + '</li>'; }).join("") + '</ol>' + pathHtml(d, "/company.html?ticker=")
+      + '<p><b>Read its filings before you do anything else.</b> <a class="go" href="#edgar">The record &darr;</a> <a href="https://warrantwire.com/company.html?t=' + esc(tk) + '" style="margin-left:10px">The warrant verdict at Warrant Wire &rarr;</a></p></div>';
   }
-
-  fetch('/api/detections?ticker=' + encodeURIComponent(t))
-    .then(function(r){ return r.text().then(function(x){
-      try { return JSON.parse(x); }
-      catch(e){ throw new Error('The server returned ' + r.status + '.'); } }); })
-    .then(function(d){
-      var r = (d.rows || [])[0];
-      if (!r) {
-        page.innerHTML =
-          '<div class="co-head"><h1><span class="tk">' + esc(t) + '</span></h1>' +
-          '<p class="meta">Nobody has run the six questions on this company yet.</p></div>' +
-          '<p style="margin-top:18px">The filings are public and the questions are the same for ' +
-          'every company. A screen takes real reading, so it is the one thing here that costs money.</p>' +
-          '<p><a href="' + APP + '/screen?ticker=' + esc(t) + '">Request a screen &rarr;</a></p>';
+  function sigBox(list, title, lead, rule) {
+    if (!list || !list.length) return "";
+    var seen = {}, g = [];
+    list.forEach(function (x) { var k = (x.form || "") + "|" + (x.filed_on || "") + "|" + (x.said || ""); if (seen[k]) { seen[k].n++; return; } seen[k] = { x: x, n: 1 }; g.push(seen[k]); });
+    var last = list[list.length - 1].filed_on, first = list[0].filed_on;
+    var span = list.length > 1 && last ? ' between ' + esc(String(last).slice(0, 7)) + ' and ' + esc(String(first).slice(0, 7)) : (first ? ' in ' + esc(String(first).slice(0, 7)) : '');
+    return '<div class="warn"><span class="k">&#9888; ' + title + '</span><p>' + lead + ' <b>' + list.length + ' filing' + (list.length === 1 ? '' : 's') + span + '.</b> Which ones, and what they say, are the goods.</p>'
+      + '<p class="fine"><a href="https://warrantwire.com/rules.html#' + rule + '">Rule ' + rule + ' &rarr;</a></p></div>';
+  }
+  function edgarBox(e, tk) {
+    if (!e || !e.filings) return '<div class="edgar" id="edgar"><h2>Nothing on EDGAR since 2001.</h2><p class="fine">No filings on record for this ticker in the period 8K10Q reads.</p></div>';
+    var forms = Object.keys(e.forms || {}).sort(function (x, y) { return e.forms[y] - e.forms[x]; }).slice(0, 8).map(function (f) { return '<span>' + esc(f) + ' <b>' + e.forms[f] + '</b></span>'; }).join("");
+    var rows = (e.recent_all || e.recent || []).slice(0, 40).map(function (r) {
+      /* ⚠ 8 Nov 2026 — NO LINK TO EDGAR HERE. Mark: "we are sending them to edgar when
+         we should be reading for them ... we should only show a date not a link and they
+         should ask us to read."
+         The filing IS the goods. Handing a man the document free, on the very page meant
+         to sell him the reading of it, gives away the only reason he came. The form and
+         the date stay — that is the record, and it shows we have it. The document itself
+         is the thing we read FOR him. */
+      return '<li><span class="ef">' + esc(r.form) + '</span><span class="ed">' + esc(r.filed_on) + '</span><span></span>'
+        + '<button class="buy" data-acc="' + esc(r.accession) + '" data-t="' + esc(tk) + '" data-form="' + esc(r.form || "") + '" data-filed="' + esc(r.filed_on || "") + '">Read it here &middot; $12</button></li>';
+    }).join("");
+    var yf = e.past_year_forms || {}, yforms = Object.keys(yf).sort(function (x, y) { return yf[y] - yf[x]; }).slice(0, 8).map(function (f) { return '<span>' + esc(f) + ' <b>' + yf[f] + '</b></span>'; }).join("");
+    return '<div class="edgar" id="edgar"><h2>' + (e.past_year != null ? Number(e.past_year).toLocaleString("en-US") + ' filing' + (e.past_year === 1 ? '' : 's') + ' in the past year &middot; ' + Number(e.past_five_years).toLocaleString("en-US") + ' in five &middot; ' : '') + Number(e.filings).toLocaleString("en-US") + ' since ' + esc(String(e.since || "2001").slice(0, 4)) + '.</h2>'
+      + '<p class="fine">Every filing is important &mdash; the 8-K, the 10-Q, the Form 4, the notice of late filing. Pick one: 8K10Q reads the whole of it in plain English, every section, for $12.' + (e.first ? ' First filing on record ' + esc(String(e.first).slice(0, 10)) + '; latest ' + esc(String(e.latest || "").slice(0, 10)) + '.' : '') + '</p>'
+      + (yforms ? '<p class="fine" style="margin-bottom:0"><b>The past year, by form:</b></p><div class="eforms">' + yforms + '</div>' : '')
+      + '<p class="fine" style="margin-bottom:0"><b>Since 2001, by form:</b></p><div class="eforms">' + forms + '</div>'
+      + '<p class="fine" style="margin:10px 0 0"><b>The latest ' + (e.recent_all || e.recent || []).length + ', every one:</b></p><ol class="elist">' + rows + '</ol></div>';
+  }
+  function who(d, tk) {
+    var c = d.company || {}, ft = c.former_tickers || [];
+    return '<section class="who"><h1>' + esc(c.name || tk) + '<small>' + esc(c.ticker || tk) + (c.exchange ? ' &middot; ' + esc(c.exchange) : '') + '</small></h1>'
+      + (c.business ? '<p>' + esc(c.business) + (c.state_inc ? ' &middot; incorporated in ' + esc(c.state_inc) : '') + (c.cik ? ' &middot; CIK ' + esc(c.cik) : '') + '</p>' : '')
+      + ((c.former_names && c.former_names.length) ? '<p>Formerly ' + c.former_names.map(esc).join("; ") + '</p>' : '')
+      + (c.incorporated ? '<p><b>Incorporated in ' + esc(c.incorporated.name) + '</b>' + (["NV","TX","E9","D8","WY"].indexOf(c.incorporated.code) > -1 ? ' &mdash; <b style="color:var(--stop)">be careful buying stock from this state: your rights may be limited.</b> <a href="https://warrantwire.com/states.html">Why &rarr;</a>' : (["DE","CA","NY"].indexOf(c.incorporated.code) > -1 ? ' &mdash; among the fairest states to a shareholder. <a href="https://warrantwire.com/states.html">The ranking &rarr;</a>' : ' &mdash; <a href="https://warrantwire.com/states.html">how fair its law is to a shareholder</a>.')) + (c.incorporated.registry ? ' Registered agent of record: <a href="' + esc(c.incorporated.registry.url) + '" target="_blank" rel="noopener">' + esc(c.incorporated.registry.name) + ' &rarr;</a>' : '') + '</p>' : '')
+      + (c.agent ? '<p><b>Agent for service:</b> ' + esc(c.agent.name) + (c.agent.address ? ', ' + esc(c.agent.address) : '') + (c.agent.phone ? ', ' + esc(c.agent.phone) : '') + ' <span style="color:var(--ink-2)">&mdash; per its ' + esc(c.agent.source.form) + ' of ' + esc(c.agent.source.filed_on) + '</span> &middot; <a href="https://warrantwire.com/agents.html?q=' + esc(tk) + '">the agents page</a></p>'
+                 : '<p style="color:var(--stop)"><b>No agent for service disclosed</b> on any registration statement in its record &mdash; a red flag. <a href="https://warrantwire.com/agents.html?q=' + esc(tk) + '" style="color:var(--stop)">The agents page, and a letter to the SEC &rarr;</a></p>')
+      + (ft.length ? '<p><b>Formerly traded as ' + ft.map(function (x) { return '<a href="/company.html?ticker=' + esc(x.ticker) + '">' + esc(x.ticker) + '</a>' + (x.name ? ' (' + esc(x.name) + ')' : ''); }).join(", ") + '</b> &mdash; the same company, the same record.</p>' : '')
+      + (c.edgar ? '<p><a href="' + esc(c.edgar) + '" target="_blank" rel="noopener">Its EDGAR page &rarr;</a></p>' : '') + '</section>';
+  }
+  fetch(WIRE + "/?wire=1&q=" + encodeURIComponent(T)).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.ok) { page.innerHTML = '<div class="quiet">The wire did not answer for ' + esc(T) + '.</div>'; return; }
+    var c = d.company || {}, tk = (c.ticker || T).toUpperCase();
+    if (!c.name && !(d.edgar && d.edgar.filings)) { page.innerHTML = '<div class="quiet"><b>' + esc(T) + '</b> is not a ticker on the SEC&rsquo;s map, and not one this wire has seen before. If it is an old ticker, search the company by its name at <a href="https://warrantwire.com/company.html?t=' + esc(T) + '">Warrant Wire</a> and we will learn it.</div>'; return; }
+    document.title = (c.name || tk) + " (" + tk + ") — 8K10Q";
+    var a = d.about || {}, warrants = a.filings ? '<div class="warn"><span class="k">&#9888; Warrant paper on the wire</span><p><b>' + a.filings + ' filing' + (a.filings === 1 ? '' : 's') + ' carrying warrant terms' + (a.first ? ' since ' + esc(String(a.first).slice(0, 10)) : '') + '.</b> The third tell-tale. Warrant Wire renders the verdict on it; 8K10Q reads the filings themselves.</p><p class="fine"><a href="https://warrantwire.com/company.html?t=' + esc(tk) + '">The warrant verdict at Warrant Wire &rarr;</a></p></div>' : '';
+    var s = d.signals || {};
+    page.innerHTML = who(d, tk)
+      + flagsBox(d, tk)
+      + stopBox(d, tk)
+      + sigBox(s.splits, "Reverse split &mdash; high risk", "<b>The company&rsquo;s own filing carries the language of a reverse split.</b> A reverse split changes nothing about the company and everything about the count: the same business, fewer shares, the price marked up to match &mdash; the financier&rsquo;s reset button.", "W12")
+      + sigBox(s.merger, "Merger, sale or wind-down on the table", "<b>The company&rsquo;s own filing carries the language of a merger, a sale, a strategic review or a wind-down.</b> For a company that has lived on warrant paper this is usually how the story ends.", "W10")
+      + warrants
+      + edgarBox(d.edgar, tk);
+    Array.prototype.forEach.call(page.querySelectorAll("button.buy"), function (b) {
+      /* ⚠ SELLING IS SWITCHED OFF (26 Sep 2026) until a paid read is actually
+         produced and delivered. See SELLING in index.html. */
+      /* ⚠ 8 Nov 2026 — A DEAD BUTTON IS WORSE THAN NO BUTTON. "Reading opens
+         soon", greyed out and unclickable, was the only thing beside every
+         filing. Mark: "they should ask us to read."
+         Selling STAYS OFF — his own rule is never sell what isn't delivered,
+         and the reader has produced nothing since 8 Sep. But asking costs him
+         nothing, is honest about where we are, and leaves the one record we
+         have never had: WHAT PEOPLE ACTUALLY WANT READ. That list is the
+         reading queue, and the day reading opens it is a list of people to
+         tell. */
+      if (!SELLING) {
+        b.textContent = "Ask us to read this";
+        b.addEventListener("click", function () {
+          if (b.dataset.asked) return;
+          b.disabled = true; b.textContent = "Asking…";
+          var qs = "want=1&accession=" + encodeURIComponent(b.getAttribute("data-acc")) +
+                   "&ticker=" + encodeURIComponent(b.getAttribute("data-t") || "") +
+                   "&form=" + encodeURIComponent(b.getAttribute("data-form") || "") +
+                   "&filed=" + encodeURIComponent(b.getAttribute("data-filed") || "");
+          fetch("https://read.realroofers.workers.dev/?" + qs)
+            .then(function (r) { return r.json(); })
+            .then(function (j) {
+              if (!j || !j.ok) throw new Error((j && j.error) || "no");
+              b.dataset.asked = "1";
+              b.textContent = j.asked_for_this_filing > 1
+                ? "Asked · " + j.asked_for_this_filing + " want this read"
+                : "Asked. You are the first.";
+              b.style.opacity = ".85";
+              var m = document.getElementById("buymsg");
+              if (m) m.textContent = j.note;
+            })
+            .catch(function () {
+              b.disabled = false; b.textContent = "Ask us to read this";
+              var m = document.getElementById("buymsg");
+              if (m) { m.textContent = "The desk is not answering just now. Try again in a moment."; m.className = "bad"; }
+            });
+        });
         return;
       }
-
-      var failed = Number(r.tests_failed || 0);
-      var cls = failed === 0 ? 'clear' : 'fail';
-      var word = failed === 0 ? 'Cleared \u2014 0 of 10' : failed + ' of 10 failed';
-
-      var h = '';
-
-      /* ---- head ---- */
-      h += '<div class="co-head">' +
-             '<h1><span class="tk">' + esc(r.ticker) + '</span>' +
-             (r.company_name ? ' &mdash; ' + esc(r.company_name) : '') + '</h1>' +
-             '<p class="meta">' + esc(instrument(r.mechanism)) +
-               ' &middot; ' + esc(r.event_date) +
-               (r.state_of_incorporation ? ' &middot; incorporated in ' + esc(r.state_of_incorporation) : '') +
-               (r.filing_type ? ' &middot; ' + esc(r.filing_type) : '') + '</p>' +
-             '<span class="verdict ' + cls + '">' + word + '</span>' +
-             (Number(r.exhibit_read) ? '' :
-               '<p class="meta" style="margin-top:10px"><b>The exhibit has not been read yet.</b> ' +
-               'Everything below comes from the summary in the filing, not from the instrument itself.</p>') +
-           '</div>';
-
-      /* ---- the figures ---- */
-      h += '<div class="figs">';
-      h += '<div class="fig"><p class="k">Price on the day</p><p class="v">' + money(r.price_at_event) + '</p></div>';
-      h += '<div class="fig"><p class="k">90 days later</p><p class="v">' + money(r.price_90d) +
-             '</p><p class="n">' + pct(r.chg_90d_pct) + '</p></div>';
-      h += '<div class="fig"><p class="k">One year later</p><p class="v">' + money(r.price_1y) +
-             '</p><p class="n">' + pct(r.chg_1y_pct) + '</p></div>';
-      h += '<div class="fig"><p class="k">Shares out then</p><p class="v">' + num(r.shares_out_at_event) + '</p></div>';
-      h += '<div class="fig"><p class="k">Shares out now</p><p class="v">' + num(r.shares_out_now) +
-             '</p>' + (r.dilution_multiple ? '<p class="n">' + Number(r.dilution_multiple).toFixed(1) + '\u00D7 more shares</p>' : '') +
-           '</div>';
-      if (r.reverse_split_since) {
-        h += '<div class="fig"><p class="k">Reverse split since</p><p class="v">' +
-             esc(r.reverse_split_ratio || 'Yes') + '</p>' +
-             (r.reverse_split_date ? '<p class="n">' + esc(r.reverse_split_date) + '</p>' : '') + '</div>';
-      }
-      if (r.financings_since) {
-        h += '<div class="fig"><p class="k">Raises since</p><p class="v">' + num(r.financings_since) + '</p></div>';
-      }
-      h += '</div>';
-      h += '<p class="note">Prices and share counts are taken from the cover page of the company\'s ' +
-           'own reports and from third-party market data. A blank means it has not been filled in yet.</p>';
-
-      /* ---- the six questions ---- */
-      h += '<hr class="rule"><p class="eyebrow">The six questions</p>' +
-           '<h2>Answered from the company\'s own filings</h2>';
-
-      var answers = [
-        r.test_1_floating_reset, r.test_2_financier_holder, r.pct_of_shares_out,
-        r.test_3_non_cash_value, r.test_4_blocker, r.test_5_discount_coverage,
-        r.test_7_cashless, r.test_8_contra_revenue, r.test_9_governance_waived,
-        r.test_10_who_arranged
-      ];
-
-      (d.tests || []).forEach(function(tst, i){
-        var a = answers[i];
-        var v = verdictOf(tst.test_no, a);
-        h += '<div class="q ' + v.cls + '">' +
-               '<span class="ans ' + v.cls + '">' + v.word + '</span>' +
-               '<span class="no">Question ' + esc(tst.test_no) + '</span>' +
-               '<h3>' + esc(tst.short_name) + '</h3>' +
-               '<p>' + esc(tst.question) + '</p>' +
-               '<p class="src">What fails it: ' + esc(tst.what_fails) +
-                 '<br>Read it in: ' + esc(tst.source_document) + '</p>';
-
-        var ev = (d.evidence || []).filter(function(x){ return x.test_no === tst.test_no; });
-        if (ev.length) {
-          h += '<div class="ev">';
-          ev.forEach(function(x){
-            h += '<p><b>' + esc(x.what_it_shows) + '</b></p>';
-            if (x.quoted_text) h += '<blockquote>' + esc(x.quoted_text) + '</blockquote>';
-            h += '<p><a href="' + esc(x.filing_url) + '">' +
-                 esc(x.filing_type || 'The filing') +
-                 (x.filing_date ? ', ' + esc(x.filing_date) : '') +
-                 (x.page_or_section ? ' \u2014 ' + esc(x.page_or_section) : '') +
-                 ' &rarr;</a></p>';
-          });
-          h += '</div>';
-        }
-        h += '</div>';
+      b.addEventListener("click", function () {
+        var email = prompt("Your email address — the receipt and the reading go here."); if (!email) return;
+        var m = document.getElementById("buymsg");
+        if (email.indexOf("@") < 1) { m.textContent = "That does not look like an email address."; m.className = "bad"; return; }
+        m.className = ""; m.textContent = "Opening checkout…";
+        fetch(PAY + "/?buy=wire_read&email=" + encodeURIComponent(email) + "&on=k8&ticker=" + encodeURIComponent(b.getAttribute("data-t")) + "&ref=" + encodeURIComponent(b.getAttribute("data-t") + ":" + b.getAttribute("data-acc")))
+          .then(function (r) { return r.json(); }).then(function (j) { if (j && j.ok && j.url) location.href = j.url; else { m.textContent = (j && j.error) || "Could not start the checkout."; m.className = "bad"; } })
+          .catch(function () { m.textContent = "Could not reach the payment desk."; m.className = "bad"; });
       });
-
-      /* ---- notes, report, follow ---- */
-      if (r.notes) {
-        h += '<hr class="rule"><p class="eyebrow">Note</p><p class="lede">' + esc(r.notes) + '</p>';
-      }
-
-      h += '<hr class="rule"><p class="eyebrow">Next</p><p class="lede">';
-      if (r.report_url) {
-        h += '<a href="' + esc(r.report_url) + '">Read the full report on this company &rarr;</a><br>';
-      }
-      if (r.filing_url) {
-        h += '<a href="' + esc(r.filing_url) + '">Open the filing on EDGAR &rarr;</a><br>';
-      }
-      h += '<a href="' + APP + '/' + esc(r.ticker) + '">Follow ' + esc(r.ticker) +
-           ' at 8kzip.com &rarr;</a></p>';
-
-      page.innerHTML = h;
-      document.title = r.ticker + ' — Triggered Short™';
-    })
-    .catch(function(e){
-      page.innerHTML = '<p class="busy">Could not load this company. ' + esc(e.message) + '</p>';
     });
+  }).catch(function () { page.innerHTML = '<div class="quiet">The wire is not answering just now.</div>'; });
 })();
 </script>
 </body>
